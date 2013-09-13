@@ -21,6 +21,7 @@
 	@if (IsSectionDefined("head")) { @RenderSection("head") }
 </head>
 <body>
+
 	@{ Html.ControlPanel().Render(); }
 	<div id="wrapper" class="clearfix">
 	@if (IsSectionDefined("page"))

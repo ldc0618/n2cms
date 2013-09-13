@@ -1,0 +1,21 @@
+﻿
+
+<meta charset="utf-8" />
+	<title>@(Content.Has.SeoTitle ? Content.Data.SeoTitle : Content.Data.Title)</title>
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+@Content.Register.Meta("Author").Container("Metadata").Display()
+@Content.Register.Meta("Keywords").Container("Metadata").Display()
+@Content.Register.Meta("Description").Container("Metadata").Display()
+<link rel="shortcut icon" href="@Url.ThemedContent("~/favicon.ico")" />
+<link rel="canonical" href="@(Content.Data.Url ?? Request.RawUrl)" />
+	<!-- BEGIN GLOBAL MANDATORY STYLES -->
+
+<link href="@Url.ThemedContent("~/plugins/bootstrap/css/bootstrap.min.css")" rel="stylesheet" type="text/css"/>
+<link href="@Url.ThemedContent("~/plugins/bootstrap/css/bootstrap-responsive.min.css")" rel="stylesheet" type="text/css"/>
+<link href="@Url.ThemedContent("~/plugins/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css"/>
+<link href="@Url.ThemedContent("~/css/style-metro.css")" rel="stylesheet" type="text/css"/>
+<link href="@Url.ThemedContent("~/css/style.css")" rel="stylesheet" type="text/css"/>
+<link href="@Url.ThemedContent("~/css/style-responsive.css")" rel="stylesheet" type="text/css"/>
+<link href="@Url.ThemedContent("~/css/themes/light.css")" rel="stylesheet" type="text/css"/>
+<link href="@Url.ThemedContent("~/plugins/uniform/css/uniform.default.css")" rel="stylesheet" type="text/css"/>
+	<!-- END GLOBAL MANDATORY STYLES -->

@@ -110,7 +110,7 @@
     .sc.stateWaiting .sc-toggler:hover,
     .sc.stateDraft .sc-toggler:hover { border-color: #FF9933; } 
 
-.definitions,.controlPanel .new { padding:10px 0 25px 0; clear:left; max-height:200px; overflow:auto; margin-bottom:0; }
+.definitions,.controlPanel .new { padding:10px 0 25px 0; clear:left; max-height:500px; overflow:auto; margin-bottom:0; }
     .definition { cursor:move; padding:1px 10px; }
     .definition:hover { background-color:#eee; }
     .definition:hover { background-image:url(../../Resources/Img/part_bg.png) }

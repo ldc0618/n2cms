@@ -397,7 +397,7 @@ namespace N2.Management.Api
 		protected virtual Node<TreeNode> CreateContent(HttpContextBase context, SelectionUtility selection)
 		{
 			var filter = engine.EditManager.GetEditorFilter(context.User);
-
+            
 			var structure = new BranchHierarchyBuilder(selection.SelectedItem, selection.Traverse.RootPage, true) { UseMasterVersion = false }
 				.Children((item) => 
 				{

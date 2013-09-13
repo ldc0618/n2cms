@@ -23,7 +23,7 @@ a { text-decoration: none; color: #000; }
 
 #page-search { border-bottom:1px solid #C7C7C7; border-right: 1px solid #c7c7c7; }
 	#page-search .search-query { display:block; width:auto; margin:0; }
-		#page-search .search-query input { width:90%; box-sizing:border-box; border:none; height:23px; box-shadow:none; vertical-align:middle; padding-left: 10px;}
+		#page-search .search-query input { width:90%; box-sizing:border-box; border:none; height:23px; line-height:23px; box-shadow:none; vertical-align:middle; padding-left: 10px;}
 		#page-search .search-query button { position:absolute; right:0; z-index:1000; }
 	#page-search .search-results { display:block; background-color:#fff; position:absolute; z-index:3000; width:100%; max-height:300px; margin:0; overflow:auto; box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2); }
 	#page-search .search-results.stale { opacity:.5; }
@@ -34,7 +34,7 @@ a { text-decoration: none; color: #000; }
 			#page-search .search-results li a:hover { color:#fff; background-color: #18a0de; }
 				#page-search .search-results li a .ico-custom { height:16px; width:16px; display:inline-block; vertical-align:middle; }
 
-#page-tree { position: absolute; left:0; right:0; top: 0; bottom: 0; overflow: auto; margin-top:31px;}
+#page-tree { position: absolute; left:0; right:0; top: 0; bottom: 0; overflow:scroll; margin-top:31px;}
 	#page-tree ul { list-style-type:none; padding:0; margin:0; }
 		#page-tree li.node { margin-left: 10px; text-indent: 5px; line-height: 28px; }
 			#page-tree li div.item { position:relative; white-space:nowrap; text-overflow: ellipsis; }

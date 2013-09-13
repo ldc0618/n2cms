@@ -1,0 +1,183 @@
+﻿<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	@{ Html.RenderPartial("LayoutPartials/Head"); }
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="page-header-fixed">
+	<!-- BEGIN HEADER -->   
+	<div class="header navbar navbar-inverse navbar-fixed-top">
+		<!-- BEGIN TOP NAVIGATION BAR -->
+		<div class="navbar-inner">
+			<div class="container-fluid">
+				<!-- BEGIN LOGO -->
+				<a class="brand" href="index.html">
+				<img src="@Url.ThemedContent("~/img/logo.png")" alt="logo" />
+				</a>
+				<!-- END LOGO -->
+				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
+				<a href="javascript:;" class="btn-navbar collapsed" data-toggle="collapse" data-target=".nav-collapse">
+				<img src="@Url.ThemedContent("~/img/menu-toggler.png")" alt="" />
+				</a>          
+				<!-- END RESPONSIVE MENU TOGGLER -->            
+				<!-- BEGIN TOP NAVIGATION MENU -->              
+				
+                @{ Html.RenderPartial("LayoutPartials/RightTop"); }
+
+				<!-- END TOP NAVIGATION MENU --> 
+			</div>
+		</div>
+		<!-- END TOP NAVIGATION BAR -->
+	</div>
+	<!-- END HEADER -->
+	<!-- BEGIN CONTAINER -->   
+	<div class="page-container row-fluid">
+		<!-- BEGIN SIDEBAR -->
+		<div class="page-sidebar nav-collapse collapse">
+			<!-- BEGIN SIDEBAR MENU -->        
+			
+            @{ Html.RenderPartial("LayoutPartials/LeftNav"); }
+
+			<!-- END SIDEBAR MENU -->
+		</div>
+		<!-- END SIDEBAR -->
+		<!-- BEGIN PAGE -->
+		<div class="page-content">
+			<!-- BEGIN SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<div id="portlet-config" class="modal hide">
+				<div class="modal-header">
+					<button data-dismiss="modal" class="close" type="button"></button>
+					<h3>portlet Settings</h3>
+				</div>
+				<div class="modal-body">
+					<p>Here will be a configuration form</p>
+				</div>
+			</div>
+			<!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE HEADER-->
+				<div class="row-fluid">
+					<div class="span12">
+						<!-- BEGIN STYLE CUSTOMIZER -->
+
+                        @{ Html.RenderPartial("LayoutPartials/Gear"); }
+
+						<!-- END BEGIN STYLE CUSTOMIZER --> 
+						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
+						<h3 class="page-title">
+							@Content.Current.Page.Title <small>@Content.Current.Page.Name</small>
+						</h3>
+						<ul class="breadcrumb">
+							<li>
+								<i class="icon-home"></i>
+								<a href="index.html">Home</a> 
+								<i class="icon-angle-right"></i>
+							</li>
+							<li>
+								<a href="#">Layouts</a>
+								<i class="icon-angle-right"></i>
+							</li>
+							<li><a href="#">Blank Page</a></li>
+						</ul>
+						<!-- END PAGE TITLE & BREADCRUMB-->
+					</div>
+				</div>
+				<!-- END PAGE HEADER-->
+				<!-- BEGIN PAGE CONTENT-->
+				<div class="row-fluid">
+					<div class="span12">
+						Blank page content goes here
+
+                        @Html.Tree(Content.Parse(Request["returnUrl"]) ?? Content.Traverse.StartPage, htmlAttributes: new { id = "menu", @class = "topmenu menu clearfix level1" }, appendCreatorNode: true)
+
+                        @{ Html.RenderPartial("LayoutPartials/Logotype"); }
+
+					</div>
+				</div>
+				<!-- END PAGE CONTENT-->
+			</div>
+			<!-- END PAGE CONTAINER--> 
+		</div>
+		<!-- END PAGE -->    
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN FOOTER -->
+	<div class="footer">
+		<div class="footer-inner">
+			2013 &copy; Vauzo | @{ Html.RenderPartial("LayoutPartials/Footer"); }
+		</div>
+		<div class="footer-tools">
+			<span class="go-top">
+			<i class="icon-angle-up"></i>
+			</span>
+		</div>
+	</div>
+	<!-- END FOOTER -->
+	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
+	<!-- BEGIN CORE PLUGINS -->   
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery-1.10.1.min.js")); }
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery-migrate-1.2.1.min.js")); }
+	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js")); }
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/bootstrap/js/bootstrap.min.js")); }
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js")); }
+	<!--[if lt IE 9]>
+	<script src="assets/plugins/excanvas.min.js"></script>
+	<script src="assets/plugins/respond.min.js"></script>  
+	<![endif]-->   
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery-slimscroll/jquery.slimscroll.min.js")); }
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery.blockui.min.js")); }
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery.cookie.min.js")); }
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/uniform/jquery.uniform.min.js")); }
+	<!-- END CORE PLUGINS -->
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/scripts/app.js")); }
+	<script>
+		jQuery(document).ready(function() {    
+		   App.init();
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>
+
+
+	
+	@{
+		Content.PrependDefinition(re =>
+		{
+			re.Tab("Content", "Content");
+			re.PublishedRange().Container("Metadata");
+		});
+	 }
+
+
+	@{ Html.ControlPanel().Render(); }
+	<div id="wrapper" class="clearfix">
+	@if (IsSectionDefined("page"))
+ { <div>@RenderSection("page")</div> }
+ else
+ {
+		<div id="page">
+			@if (IsSectionDefined("main"))
+   { <div>@RenderSection("main")</div> }
+   else
+   {
+			<div id="main" class="clearfix">
+				@{ Html.RenderPartial("LayoutPartials/PreContent"); }
+				<div id="aside" role="complementary">@if (IsSectionDefined("Aside"))
+                                         { <div>@RenderSection("Aside")</div> }
+                                         else { Html.DroppableZone("Aside").Render(); }</div>
+				<div id="content" role="main">@RenderBody()</div>
+				@{ Html.RenderPartial("LayoutPartials/PostContent"); }
+			</div>
+   }
+		</div>
+ }
+	</div>
+	@*@{ Html.Zone("Scripts").Render(); }*@
