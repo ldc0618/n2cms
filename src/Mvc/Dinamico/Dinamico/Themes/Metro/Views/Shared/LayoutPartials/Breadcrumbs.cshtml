@@ -1,0 +1,15 @@
+﻿
+
+<ul class="breadcrumb">
+
+    					<li>
+								<i class="icon-home"></i>
+								
+							</li>
+
+    @Html.Loop(@Content.Traverse.AncestorsBetween(0, 10), @<li>
+	@Html.Link(item.Data).Class(item.Data == Content.Current.Item ? "current" : "crumb")
+</li>, separator:@<li><i class="icon-angle-right"></i></li>)
+
+
+						</ul>

@@ -16,7 +16,7 @@
 			<div class="container-fluid">
 				<!-- BEGIN LOGO -->
 				<a class="brand" href="index.html">
-				<img src="@Url.ThemedContent("~/img/logo.png")" alt="logo" />
+                     @{ Html.RenderPartial("LayoutPartials/Logotype"); }
 				</a>
 				<!-- END LOGO -->
 				<!-- BEGIN RESPONSIVE MENU TOGGLER -->
@@ -72,18 +72,9 @@
 						<h3 class="page-title">
 							@Content.Current.Page.Title <small>@Content.Current.Page.Name</small>
 						</h3>
-						<ul class="breadcrumb">
-							<li>
-								<i class="icon-home"></i>
-								<a href="index.html">Home</a> 
-								<i class="icon-angle-right"></i>
-							</li>
-							<li>
-								<a href="#">Layouts</a>
-								<i class="icon-angle-right"></i>
-							</li>
-							<li><a href="#">Blank Page</a></li>
-						</ul>
+						
+                        @{ Html.RenderPartial("LayoutPartials/Breadcrumbs"); }
+
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>
 				</div>
@@ -91,11 +82,46 @@
 				<!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid">
 					<div class="span12">
-						Blank page content goes here
 
-                        @Html.Tree(Content.Parse(Request["returnUrl"]) ?? Content.Traverse.StartPage, htmlAttributes: new { id = "menu", @class = "topmenu menu clearfix level1" }, appendCreatorNode: true)
+                       
 
-                        @{ Html.RenderPartial("LayoutPartials/Logotype"); }
+
+                        	
+	@{
+		Content.PrependDefinition(re =>
+		{
+			re.Tab("Content", "Content");
+			re.PublishedRange().Container("Metadata");
+		});
+	 }
+
+
+	@{ Html.ControlPanel().Render(); }
+	<div id="wrapper" class="clearfix">
+	@if (IsSectionDefined("page"))
+ { <div>@RenderSection("page")</div> }
+ else
+ {
+		<div id="page">
+			@if (IsSectionDefined("main"))
+   { <div>@RenderSection("main")</div> }
+   else
+   {
+			<div id="main" class="clearfix">
+				@{ Html.RenderPartial("LayoutPartials/PreContent"); }
+				<div id="aside" role="complementary">@if (IsSectionDefined("Aside"))
+                                         { <div>@RenderSection("Aside")</div> }
+                                         else { Html.DroppableZone("Aside").Render(); }</div>
+				<div id="content" role="main">@RenderBody()</div>
+				@{ Html.RenderPartial("LayoutPartials/PostContent"); }
+			</div>
+   }
+		</div>
+ }
+	</div>
+	@{ Html.Zone("Scripts").Render(); }
+
+
 
 					</div>
 				</div>
@@ -147,37 +173,3 @@
 </html>
 
 
-	
-	@{
-		Content.PrependDefinition(re =>
-		{
-			re.Tab("Content", "Content");
-			re.PublishedRange().Container("Metadata");
-		});
-	 }
-
-
-	@{ Html.ControlPanel().Render(); }
-	<div id="wrapper" class="clearfix">
-	@if (IsSectionDefined("page"))
- { <div>@RenderSection("page")</div> }
- else
- {
-		<div id="page">
-			@if (IsSectionDefined("main"))
-   { <div>@RenderSection("main")</div> }
-   else
-   {
-			<div id="main" class="clearfix">
-				@{ Html.RenderPartial("LayoutPartials/PreContent"); }
-				<div id="aside" role="complementary">@if (IsSectionDefined("Aside"))
-                                         { <div>@RenderSection("Aside")</div> }
-                                         else { Html.DroppableZone("Aside").Render(); }</div>
-				<div id="content" role="main">@RenderBody()</div>
-				@{ Html.RenderPartial("LayoutPartials/PostContent"); }
-			</div>
-   }
-		</div>
- }
-	</div>
-	@*@{ Html.Zone("Scripts").Render(); }*@

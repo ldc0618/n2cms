@@ -2318,6 +2318,7 @@
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\RightTop.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\Gear.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\UserLogin.cshtml" />
+    <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\Breadcrumbs.cshtml" />
     <None Include="Dinamico\Themes\Web.config.MVC3" />
   </ItemGroup>
   <ItemGroup>
@@ -2361,15 +2362,16 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>5446</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:5446/</IISUrl>
+          <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
+          <IISAppRootUrl>http://localhost:5446/</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
-          <UseCustomServer>False</UseCustomServer>
-          <CustomServerUrl>
-          </CustomServerUrl>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://localhost:8700</CustomServerUrl>
           <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>

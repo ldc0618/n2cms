@@ -2,10 +2,9 @@
 
 
 
-@helper IsActive(string url)
+@helper IsTopLevelActive(bool isTopLevelActive, bool isChildIfTopLevelActive)
 {
-    var pageUrl = Request.Url.AbsolutePath;
-    if (url == pageUrl)
+    if (isTopLevelActive || isChildIfTopLevelActive)
     {
         @Html.Raw("active");
     }
@@ -41,9 +40,9 @@
 				</li>
 
     				<li class="start ">
-					<a href="index.html">
+					<a href="/">
 					<i class="icon-home"></i> 
-					<span class="title">Dashboard</span>
+					<span class="title">Home</span>
 					</a>
 				</li>
 
@@ -51,23 +50,37 @@
     int level = 1;
     foreach (var a in Content.Traverse.NavigatableChildPages(Content.Traverse.StartPage).TryAppendCreatorNode(Html.ContentEngine(), Content.Traverse.StartPage))
     {
-	    <li class="@IsActive(a.Url)">
+        var children = Content.Traverse.NavigatableChildPages(a).TryAppendCreatorNode(Html.ContentEngine(), a);
+        var currentId = Content.Current.Page.ID;
+        var isTopLevelActive = Content.Current.Page.ID == a.ID;
+        var isChildOfTopLevelActive = children.FirstOrDefault(x => x.ID == Content.Current.Page.ID) != null;
+        
+	    <li class="@IsTopLevelActive(isTopLevelActive, isChildOfTopLevelActive)">
 		    <a href="@a.Url">
 		    <i class="icon-file-text"></i> 
 		    <span class="title">@a.Title</span>
-		    <span class="arrow "></span>
+		    @if (children.Count() > 0)
+            {
+                <span class="selected"></span>
+                <span class="arrow open"></span>
+            }
+            else
+            {
+              <span class="arrow "></span>
+            }
 		    </a>
             <!-- 2nd Level Start -->
             @{
-                var children = Content.Traverse.NavigatableChildPages(a).TryAppendCreatorNode(Html.ContentEngine(), a);
-                if (children.Count() > 0)
+                
+        if (children.Count() > 0 && (isTopLevelActive || isChildOfTopLevelActive))
                 {
                     <ul class="sub-menu">
                         @foreach(var b in children)
                         {
-			            <li >
-				            <a href="@b.Url">@b.Title</a>
-			            </li>
+                            var isSecondLevelActive = Content.Current.Page.ID == b.ID;
+			                <li class="@IsTopLevelActive(false, isSecondLevelActive)" >
+				                <a href="@b.Url">@b.Title</a>
+			                </li>
                         }
 		            </ul>
                 }
