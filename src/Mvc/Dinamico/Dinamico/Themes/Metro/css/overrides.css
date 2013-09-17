@@ -6,3 +6,7 @@
 .navbar .brand {
     padding: 7px 0;
 }
+
+.sc {
+    z-index:9002;
+}

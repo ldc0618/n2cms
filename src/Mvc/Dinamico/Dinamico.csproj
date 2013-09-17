@@ -103,18 +103,31 @@
     <Compile Include="Dinamico\Controllers\FreeFormController.cs" />
     <Compile Include="Dinamico\Controllers\LanguageIntersectionController.cs" />
     <Compile Include="Dinamico\Controllers\MembershipController.cs" />
+    <Compile Include="Dinamico\Controllers\NewsContainerController.cs" />
     <Compile Include="Dinamico\Controllers\StartPageController.cs" />
     <Compile Include="Dinamico\Controllers\TestController.cs" />
+    <Compile Include="Dinamico\Controllers\TestPageController.cs" />
     <Compile Include="Dinamico\Defaults.cs" />
     <Compile Include="Dinamico\GlobalMvcStarter.cs" />
     <Compile Include="Dinamico\Models\AccountModels.cs" />
     <Compile Include="Dinamico\Models\ContentPage.cs" />
+    <Compile Include="Dinamico\Models\ContentPageBase.cs" />
     <Compile Include="Dinamico\Models\ContentPart.cs" />
     <Compile Include="Dinamico\Models\FreeForm.cs" />
     <Compile Include="Dinamico\Models\LanguageIntersection.cs" />
+    <Compile Include="Dinamico\Models\News.cs" />
+    <Compile Include="Dinamico\Models\NewsContainer.cs" />
+    <Compile Include="Dinamico\Models\NewsContainerModel.cs" />
+    <Compile Include="Dinamico\Models\NewsList.cs" />
+    <Compile Include="Dinamico\Models\PageBase.cs" />
     <Compile Include="Dinamico\Models\PageModelBase.cs" />
+    <Compile Include="Dinamico\Models\PartBase.cs" />
     <Compile Include="Dinamico\Models\PartModelBase.cs" />
+    <Compile Include="Dinamico\Models\SidebarItem.cs" />
     <Compile Include="Dinamico\Models\StartPage.cs" />
+    <Compile Include="Dinamico\Models\Tabs.cs" />
+    <Compile Include="Dinamico\Models\TestPage.cs" />
+    <Compile Include="Dinamico\Models\Zones.cs" />
     <Compile Include="Dinamico\Registrations\FreeFormRegistration.cs" />
     <Compile Include="Dinamico\Registrations\PermissionDeniedHandler.cs" />
     <Compile Include="Dinamico\Registrations\RecursiveZoneAdapter.cs" />
@@ -1885,6 +1898,10 @@
     <Content Include="Dinamico\Themes\Metro\Views\Membership\ChangePasswordSuccess.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Membership\LogOn.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Membership\Register.cshtml" />
+    <Content Include="Dinamico\Themes\Metro\Views\NewsContainer\Index.aspx" />
+    <Content Include="Dinamico\Themes\Metro\Views\NewsContainer\Range.ascx" />
+    <Content Include="Dinamico\Themes\Metro\Views\NewsList\BoxedList.ascx" />
+    <Content Include="Dinamico\Themes\Metro\Views\NewsList\List.ascx" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\_Layout.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\Error.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\BlogContent.cshtml" />
@@ -2319,6 +2336,8 @@
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\Gear.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\UserLogin.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\Breadcrumbs.cshtml" />
+    <Content Include="Dinamico\Themes\Metro\Views\NewsContainer\Index.cshtml" />
+    <Content Include="Dinamico\Themes\Metro\Views\NewsContainer\Range.cshtml" />
     <None Include="Dinamico\Themes\Web.config.MVC3" />
   </ItemGroup>
   <ItemGroup>
