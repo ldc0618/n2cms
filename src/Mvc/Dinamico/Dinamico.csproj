@@ -1944,6 +1944,7 @@
     <Content Include="Dinamico\Themes\Metro\Views\StartPage\NotFound.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Test\Index.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Web.config" />
+    <Content Include="Dinamico\Themes\Default\Views\ContentParts\ImageAndText2.cshtml" />
     <None Include="Dinamico\Themes\Default\Views\FreeForm\Form.cshtml" />
     <None Include="Dinamico\Themes\Default\Views\FreeForm\Index.cshtml" />
     <None Include="Dinamico\Themes\Default\Views\FreeForm\Submitted.cshtml" />
