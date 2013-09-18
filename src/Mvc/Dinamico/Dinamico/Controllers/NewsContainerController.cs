@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using N2.Persistence.Finder;
 using N2.Templates.Mvc.Models;
 using N2.Persistence;
+using System.Web.Security;
 
 namespace N2.Templates.Mvc.Controllers
 {
@@ -29,12 +30,15 @@ namespace N2.Templates.Mvc.Controllers
 		[NonAction]
 		public override ActionResult Index()
 		{
+            
 			return base.Index();
+            
 		}
 
 		public virtual ActionResult Index(string tag)
 		{
-			var model = string.IsNullOrEmpty(tag) ? GetNews(0, 20) : GetNews(tag, 0, 20);
+            var take = 30;
+            var model = string.IsNullOrEmpty(tag) ? GetNews(0, take) : GetNews(tag, 0, take);
 			return View(model);
 		}
 

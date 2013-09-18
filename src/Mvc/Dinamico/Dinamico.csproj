@@ -96,7 +96,6 @@
     <Reference Include="System.Web.Services" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Code\XPage.cs" />
     <Compile Include="Dinamico\Controllers\ContentPagesController.cs" />
     <Compile Include="Dinamico\Controllers\ContentPartsController.cs" />
     <Compile Include="Dinamico\Controllers\FallbackController.cs" />
@@ -1976,6 +1975,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Code\" />
     <Folder Include="App_Data\" />
     <Folder Include="Dinamico\Themes\Metro\plugins\font-awesome\font\" />
     <Folder Include="Dinamico\Themes\Metro\plugins\jquery-file-upload\server\php\files\thumbnail\" />
