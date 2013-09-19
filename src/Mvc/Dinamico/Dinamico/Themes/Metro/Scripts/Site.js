@@ -93,6 +93,13 @@ $.fn.menudown = function (options) {
 
 $(document).ready(function () {
 
+    // Panel
+    $(window).load(function () {
+        $('.op-elem').openpanel();
+        alert("opened");
+    });
+
+
 	// Search
 
 	function highlight(text) {
@@ -155,4 +162,6 @@ $(document).ready(function () {
 	// Translations
 
 	$("#translationsopener").plupdown();
+
+
 });

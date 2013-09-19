@@ -144,6 +144,9 @@
 		</div>
 	</div>
 	<!-- END FOOTER -->
+
+    @{ Html.RenderPartial("LayoutPartials/MetroPanel"); }
+
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
 	<!-- BEGIN CORE PLUGINS -->   
     @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery-1.10.1.min.js")); }
@@ -160,6 +163,13 @@
     @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery.blockui.min.js")); }
     @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery.cookie.min.js")); }
     @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/uniform/jquery.uniform.min.js")); }
+
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/metro-panel/source/js/openpanel.min.js")); }
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/metro-panel/source/js/jscrollpane/jquery.jscrollpane.min.js")); }
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/metro-panel/source/js/jscrollpane/jquery.mousewheel.min.js")); }
+
+    @{ Html.Resources().JavaScript(Url.ThemedContent("~/scripts/custom.js")); }
+
 	<!-- END CORE PLUGINS -->
     @{ Html.Resources().JavaScript(Url.ThemedContent("~/scripts/app.js")); }
 	<script>
