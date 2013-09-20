@@ -99,5 +99,31 @@ namespace N2.Templates.Mvc.Controllers
 
 			return model;
 		}
+
+        [AcceptVerbs(HttpVerbs.Post)]
+        public JsonResult GetNewsItem(int parentId, int itemId)
+        {
+            var newsPage = N2.Find.Items.Where.ID.Eq(parentId).Select<NewsContainer>()[0];// as NewsContainer;
+            var newsItem = newsPage.NewsItems.Where(x => x.ID == itemId).Select(item => new
+            { 
+                id = item.ID,
+                published = item.Published.ToString(),
+                title = item.Title,
+                text = item.Text,
+                image = item.Image,
+                tags = item.Tags,
+                savedby = item.SavedBy
+            });
+
+            //var n = new News();
+            //n.Title = newsItem.Title;
+            //n.Text = newsItem.Text;
+            //var query = Parameter.Below(newsPage).Skip(1).Take(1 + 1).OrderBy("Published DESC");
+            //var news = finder.Find(query).OfType<News>().ToList();
+
+            //var model = CreateModel(0, 5, news).News;
+
+            return Json(newsItem, JsonRequestBehavior.AllowGet);
+        }
 	}
 }

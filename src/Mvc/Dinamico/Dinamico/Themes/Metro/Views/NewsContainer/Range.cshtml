@@ -34,18 +34,18 @@
 									<div class="span8 blog-article">
 										<h2><a href="@Model.News[i].Url">@Model.News[i].Title</a></h2>
 										<p>@Model.News[i].Summary</p>
-										<a class="btn blue" href="page_blog_item.html">
+										<a class="btn blue news-open" data-itemid="@Model.News[i].ID" data-parentid="@Model.News[i].Parent.ID" href="#">
 										Read more 
 										<i class="m-icon-swapright m-icon-white"></i>
 										</a>
 									</div>
 								</div>
                                  <hr>
-                                    <div data-panelid="panelname" data-pos="none" data-pbg='light-grey' data-ptext='dark-text' class="op-elem">
-                                      Open Panel
-                                    </div>
+                                 
                                 }
 
+                                <!-- placeholder for panel, do not remove -->   
+                                 <div data-panelid="panelname" data-pos="none" data-pbg='light-grey' data-ptext='dark-text' class="op-elem"></div>
 								
 							</div>
 							<!--end span9-->
