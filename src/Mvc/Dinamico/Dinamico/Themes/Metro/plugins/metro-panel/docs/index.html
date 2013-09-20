@@ -1,0 +1,307 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<head lang="en">
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<title>OpenPanel - Open Responsive Panel Anywhere jQuery</title>
+    <meta name="description" content="MenuStation Documentation - A Real Unlimited Responsive Menu" />
+    
+    
+	<!-- Framework CSS -->
+	<link rel="stylesheet" href="assets/blueprint-css/screen.css" type="text/css" media="screen, projection">
+	<link rel="stylesheet" href="assets/blueprint-css/print.css" type="text/css" media="print">
+	<!--[if lt IE 8]><link rel="stylesheet" href="assets/blueprint-css/ie.css" type="text/css" media="screen, projection"><![endif]-->
+	<link rel="stylesheet" href="assets/blueprint-css/plugins/fancy-type/screen.css" type="text/css" media="screen, projection">
+	<style type="text/css" media="screen">
+		p, table, hr, .box { margin-bottom:25px; }
+		.box p { margin-bottom:10px; }
+		pre { background:#006699; color:#fff; }
+		table, tr, td {
+			background:#006699; color:#fff;
+			border:1px solid #fff;
+		}
+		.table-header {
+			background:#000000 !important; color:#fff ;
+		}
+		.params { width:150px; text-align:right;}
+		.props { width:150px; text-align:center; }
+		.comment-color { color:#bbb; }
+		.important-text { font-weight:bold; color:#F00;}
+		
+	</style>
+</head>
+
+
+<body>
+	<div class="container">
+	
+		<h3 class="center alt">&ldquo;OpenPanel Plugin&rdquo; Documentation by &ldquo;SOHN&rdquo; v1.0</h3>
+		
+		<hr>
+		
+		<h1 class="center">&ldquo;OpenPanel - Open Responsive Panel Anywhere jQuery&rdquo;</h1>
+		
+		<div class="borderTop">
+			<div class="span-6 colborder info prepend-1">
+				<p class="prepend-top">
+					<strong>
+					Created: 11/2012<br>
+					By: <a href="http://codecanyon.net/user/SOHN" target="_blank">SOHN</a><br>
+					Email: <a href="http://codecanyon.net/user/SOHN" target="_blank">Contact me</a>
+					</strong>
+				</p>
+			</div><!-- end div .span-6 -->		
+	
+			<div class="span-12 last">
+				<p class="prepend-top append-0">Thank you for purchasing my item. If you have any questions that are beyond the scope of this help file, please feel free to email via my user page contact form <a href="http://codecanyon.net/user/SOHN" target="_blank">here</a>. Thanks so much!</p>
+			</div>
+		</div><!-- end div .borderTop -->
+		
+		<hr>
+		
+        <h3 style="line-height:150%;"><b>Note: To get the newest update of change logs, documentation, source code ... please go to:
+        <a href="http://docs.sonhlab.com/openpanel-responsive-panel-anywhere/">http://docs.sonhlab.com/openpanel-responsive-panel-anywhere/</a></b></h3>
+        
+		<h2 id="toc" class="alt">Table of Contents</h2>
+		<ol class="number">
+			<li><a href="#one">Setup</a></li>
+			<li><a href="#two">Create Panel</a></li>
+          <li><a href="#three">Call The Plugin</a></li>
+		  <li><a href="#four">Parameters and Easing List</a></li>
+			<li><a href="#five">Credits</a></li>
+			<li><a href="#six">Change Logs</a></li>
+		</ol>
+		
+		<hr>
+		
+		<h3 id="one"><strong>1) Setup</strong> - <a href="#toc">top</a></h3>
+		<p>To ensure everything works correctly, please use <b>&lt;!DOCTYPE html&gt;</b></p>
+        <p>Include the following code into HEAD section of the page</p>
+        
+        <p><b>Include CSS file</b></p>
+
+		<pre>&lt;link rel="stylesheet" href="css/openpanel.css" type="text/css" /&gt;</pre>
+        
+        
+        <p><b>Add Viewport Meta:</b></p>
+	  <pre>&lt;meta name="viewport" content="width=device-width, user-scalable=no" /&gt;</pre>
+
+        
+        
+      <p><b>Include Javascript files</b></p>
+        
+        <pre><span class="comment-color"> &lt;!-- jQuery Lib --&gt;</span><br />
+&lt;script type="text/javascript" src="js/jquery/jquery.min.182.js"&gt;&lt;/script&gt;<br />
+
+<span class="comment-color">&lt;!-- mousewheel plugin --&gt;</span><br />
+&lt;script type="text/javascript" src="js/jscrollpane/jquery.mousewheel.min.js"&gt;&lt;/script&gt;<br />
+
+<span class="comment-color">&lt;!-- jScrollPane script --&gt;</span><br />
+&lt;script type="text/javascript" src="js/jscrollpane/jquery.jscrollpane.min.js"&gt;&lt;/script&gt;<br />
+
+<span class="comment-color">&lt;!-- OpenPanel --&gt;</span><br />
+&lt;script type="text/javascript" src="js/openpanel.dev.js"&gt;&lt;/script&gt;
+      </pre>
+        
+        
+        <p>Setup done.</p>
+
+
+
+		<hr>
+
+		<h3 id="two"><strong>2) Create Panel</strong> - <a href="#toc">top</a></h3>
+
+<p>		        
+With Open Panel plugin you can use two methods to show panels ( Inline Content and AJAX content ).
+</p>
+<p>
+If you use Inline Content Method you will need to create panel content in viewing page and place it in <strong>Open Panel Station</strong> block.
+</p>
+<p>
+If you use AJAX Content Method you will need to create new files to contain panel content and place them in "/content/openpanel" folder.
+</p>
+<p>
+Now we will start to create a sample panel.
+</p>
+<p>
+First, we create a block and give it an id and and a class="op-panel":
+</p>
+<pre>&lt;div id="panelname" class="op-panel"&gt;
+  &lt;div class='op-panelform'&gt;
+    &lt;!-- Panel Content --&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+<p>
+Then we need to add a close button to close the panel.
+<br />
+Note: the close button must have "<strong>data-close value</strong>" (this is the current panel id.) and <strong>op-bt-close</strong> class.
+</p>
+<pre>&lt;div id="panelname" class="op-panel"&gt;
+
+  &lt;!-- Control --&gt;
+  &lt;div class="op-panelctrl"&gt;
+    &lt;!-- Close Button --&gt;
+    &lt;div data-close='panelname' class="op-panelbt op-bt-close"&gt;
+      &lt;img src="images/arrow-left-48.png" alt="close" /&gt;
+    &lt;/div&gt;
+    &lt;!-- End Close button --&gt;           
+    &lt;div class="clearspace"&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;!-- End Control --&gt;
+
+  &lt;div class="op-panelform"&gt;
+  &lt;!-- Panel Content Here --&gt;
+  &lt;/div&gt;
+
+&lt;/div&gt;</pre>
+<p>
+Final, You can add any content into the panel. You can see the demo file in the downloaded package for more detail.
+</p>
+
+	  <hr>
+        
+        <h3 id="three"><strong>3) Call The Plugin</strong> - <a href="#toc">top</a></h3>
+        
+<p>
+To open the panel you just add <strong>data-panelid="panelname"</strong> and a class you use to open panel ( Example: <strong>op-elem</strong>.). Additional, you can add data-pos, data-pbg and data-ptext if you like. See Parameters Section for more detail.
+</p>
+
+<p>Example:</p>
+<pre>&lt;div data-panelid="panelname" data-pos="none" data-pbg='solid-darkgreen' data-ptext='light-text' 
+class="op-elem"&gt;
+  Open Panel
+&lt;/div&gt;</pre>
+
+<p>
+Then add javascript to call the plugin into <code>&lt;head&gt;</code> tag:
+</p>
+<pre>&lt;script type="text/javascript"&gt;
+$(window).load(function(){
+    $('.op-elem').openpanel();
+});
+&lt;/script&gt;</pre>
+
+
+
+<hr>
+        
+
+
+	  <h3 id="four"><strong>4) Parameters</strong> - <a href="#toc">top</a></h3>
+		
+        <p>Javascript Parameters:</p>
+        
+        
+		<table>
+        	<tr id="table-header">
+            	<td class="table-header params">Parameters</td>
+                <td class="table-header props">Properties</td>
+                <td class="table-header descriptions">Descriptions</td>
+            </tr>
+        	
+            
+          <tr>
+            	<td class="params">ext</td>
+                <td class="props">string</td>
+                <td class="descriptions">
+                This param is used to define AJAX file extension.
+                <br />
+				Value: php, html, …
+            	</td>
+			</tr>
+        
+        </table>
+        
+        
+        <p>HTML Parameters</p>
+        
+		<table>
+        	<tr id="table-header">
+            	<td class="table-header params">Parameters</td>
+                <td class="table-header props">Properties</td>
+                <td class="table-header descriptions">Descriptions</td>
+            </tr>
+        	
+            
+          <tr>
+           	<td class="params">data-panelid</td>
+			<td class="props">string</td>
+			<td class="descriptions">
+			This param is used to determine which panel will be opened.<br />
+			</td>
+		</tr>
+        
+        <tr>
+            	<td class="params">data-pos</td>
+                <td class="props">string</td>
+                <td class="descriptions">
+                This param is used to set display effect.<br />
+                Value: top, left, right, bottom, none.
+            </td>
+		</tr>
+        
+        <tr>
+            	<td class="params">data-pbg</td>
+                <td class="props">string</td>
+                <td class="descriptions">
+                This param is used to set background for panel.<br />
+                Value: See Background list in CSS.
+            </td>
+		</tr>
+        
+        <tr>
+            	<td class="params">data-ptext</td>
+                <td class="props">string</td>
+                <td class="descriptions">
+                This param is used to set text color for panel.<br />
+                Value: light-text, dark-text.
+            </td>
+		</tr>
+        
+        <tr>
+            	<td class="params">data-close</td>
+                <td class="props">string</td>
+                <td class="descriptions">
+                This param is used to close panel.<br />
+                Value: The current panel id.
+            </td>
+		</tr>
+        
+      </table>
+        
+
+		
+		<hr>
+		
+	
+		<h3 id="five"><strong>5) Credits</strong> - <a href="#toc">top</a></h3>
+		
+		<p>
+        	This plugin are developed by <a href="http://sonhlab.com" target="_blank">SONHlab.com</a>
+        </p>
+        
+        <p>
+        Third Parites are used in this plugin:<br />
+        <a href="http://jquery.com" target="_blank">jQuery Library</a><br />
+        <a href="http://brandonaaron.net/code/mousewheel/docs" target="_blank">MouseWheel Plugin</a><br />
+        <a href="http://jscrollpane.kelvinluck.com/" target="_blank">jScrollPane Plugin</a>
+        </p>
+        
+      <hr>
+        
+        <h3 id="six"><strong>6) Change Logs</strong> - <a href="#toc">top</a></h3>
+		
+        <p><b>Note: To get the newest update of change logs, documentation, source code ... please go to:
+        <a href="http://docs.sonhlab.com/openpanel-responsive-panel-anywhere/">http://docs.sonhlab.com/openpanel-responsive-panel-anywhere/</a></b></p>
+        
+        
+		<hr>
+		
+		<p>Once again, thank you so much for purchasing this item. As I said at the beginning, I'd be glad to help you if you have any questions relating to this item. No guarantees, but I'll do my best to assist. </p> 
+		
+		<p class="append-bottom alt large"><strong>SOHN</strong></p>
+		<p><a href="#toc">Go To Table of Contents</a></p>
+		
+		<hr class="space">
+	</div><!-- end div .container -->
+</body>
+</html>
