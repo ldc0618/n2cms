@@ -25,11 +25,15 @@ $(document).ready(function () {
                 $('.news-text').html(r[0].text);
                 $('.news-image').attr('src', r[0].image);
 
+                //tags
+                $('.icon-tags').hide();
                 var tag = '';
                 for (var i = 0; i < r[0].tags.length; i++) { 
-                    tag = tag + '<a href="#">' + r[0].tags[i] + '</a>';
+                    tag = tag + '<a class="tag-popup" href="#">' + r[0].tags[i] + '</a>';
+                    $('.icon-tags').show();
                 }
-        
+                
+                $('.tag-popup').remove();
                 $('.news-tags').append(tag);
             },
             complete: function () {
