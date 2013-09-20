@@ -26,9 +26,8 @@ $(document).ready(function () {
                 $('.news-image').attr('src', r[0].image);
 
                 var tag = '';
-                for (var i = 0; i < r[0].tags.length; i++) {
+                for (var i = 0; i < r[0].tags.length; i++) { 
                     tag = tag + '<a href="#">' + r[0].tags[i] + '</a>';
-                    //Do something
                 }
         
                 $('.news-tags').append(tag);
