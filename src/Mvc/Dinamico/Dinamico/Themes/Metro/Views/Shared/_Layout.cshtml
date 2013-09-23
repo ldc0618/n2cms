@@ -80,11 +80,17 @@
 				</div>
 				<!-- END PAGE HEADER-->
 				<!-- BEGIN PAGE CONTENT-->
-                <div class="row-fluid">
-                    <div class="span12">
-                        @{ Html.RenderPartial("LayoutPartials/PreContent"); }
+
+                 @{ if (!string.IsNullOrEmpty(Html.DroppableZone("PreContent").ToHtmlString().ToString()))
+                    {
+                    <div class="row-fluid">
+                        <div class="span12">
+                       
+                            @{ Html.RenderPartial("LayoutPartials/PreContent"); }
+                        </div>
                     </div>
-                </div>
+                    }
+                }
                 <div class="row-fluid">
                     <div class="span8">
                         @{Html.DroppableZone("PreMain").Render();}
@@ -102,23 +108,28 @@
                         @if (IsSectionDefined("Aside"))
                         { @RenderSection("Aside") }
                         else { Html.DroppableZone("Aside").Render(); }
+                        @{ Html.DroppableZone("Recursive-Aside").Render(); } 
                     </div>
                 </div>
-                <div class="row-fluid">
-                    <div class="span12">
-                        @{ Html.RenderPartial("LayoutPartials/PostContent"); }
+                @{ if (!string.IsNullOrEmpty(Html.DroppableZone("PostContent").ToHtmlString().ToString()))
+                   {
+                    <div class="row-fluid">
+                        <div class="span12">
+                            @{ Html.RenderPartial("LayoutPartials/PostContent"); }
+                        </div>
                     </div>
-                </div>
+                    }
+                }
             </div>
         </div>
     </div>
                         	
 	@{
         Content.PrependDefinition(re =>
-		{
-			re.Tab("Content", "Content");
-			re.PublishedRange().Container("Metadata");
-		});
+        {
+            re.Tab("Content", "Content");
+            re.PublishedRange().Container("Metadata");
+        });
 	 }
 
 
@@ -170,32 +181,17 @@
 
     @{ Html.RenderPartial("LayoutPartials/MetroPanel"); }
 
-	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-	<!-- BEGIN CORE PLUGINS -->   
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery-1.10.1.min.js")); }
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery-migrate-1.2.1.min.js")); }
-	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js")); }
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/bootstrap/js/bootstrap.min.js")); }
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js")); }
+
+    @System.Web.Optimization.Scripts.Render("~/bundles/jquery-bootstrap")
+
 	<!--[if lt IE 9]>
-	<script src="assets/plugins/excanvas.min.js"></script>
-	<script src="assets/plugins/respond.min.js"></script>  
+	<script src="/Dinamico/Themes/Metro/plugins/excanvas.min.js"></script>
+	<script src="/Dinamico/Themes/Metro/plugins/respond.min.js"></script>  
 	<![endif]-->   
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery-slimscroll/jquery.slimscroll.min.js")); }
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery.blockui.min.js")); }
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/jquery.cookie.min.js")); }
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/uniform/jquery.uniform.min.js")); }
 
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/metro-panel/source/js/openpanel.min.js")); }
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/metro-panel/source/js/jscrollpane/jquery.jscrollpane.min.js")); }
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/plugins/metro-panel/source/js/jscrollpane/jquery.mousewheel.min.js")); }
-
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/scripts/custom.js")); }
-
-	<!-- END CORE PLUGINS -->
-    @{ Html.Resources().JavaScript(Url.ThemedContent("~/scripts/app.js")); }
-	<script>
+    @System.Web.Optimization.Scripts.Render("~/bundles/extras")
+	
+    <script>
 		jQuery(document).ready(function() {    
 		   App.init();
 		});

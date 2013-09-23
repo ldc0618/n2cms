@@ -41,5 +41,9 @@ namespace Dinamico.Models
 		[EditableFreeTextArea]
 		[DisplayableTokens]
 		public virtual string Text { get; set; }
+
+        [EditableText(Title = "Page Icon", ContainerName = Defaults.Containers.Metadata)]
+        public virtual string PageIcon { get; set; }
+
 	}
 }

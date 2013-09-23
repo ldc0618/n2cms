@@ -50,14 +50,21 @@
     int level = 1;
     foreach (var a in Content.Traverse.NavigatableChildPages(Content.Traverse.StartPage).TryAppendCreatorNode(Html.ContentEngine(), Content.Traverse.StartPage))
     {
+        var page = a as Dinamico.Models.ContentPage;
+        var news = a as N2.Templates.Mvc.Models.Pages.NewsContainer;
         var children = Content.Traverse.NavigatableChildPages(a).TryAppendCreatorNode(Html.ContentEngine(), a);
         var currentId = Content.Current.Page.ID;
         var isTopLevelActive = Content.Current.Page.ID == a.ID;
         var isChildOfTopLevelActive = children.FirstOrDefault(x => x.ID == Content.Current.Page.ID) != null;
+        var icon = page != null && !string.IsNullOrEmpty(page.PageIcon) ? page.PageIcon : "icon-file-text";
+        if(news != null)
+        {
+            icon = !string.IsNullOrEmpty(news.PageIcon) ? news.PageIcon : "icon-file-text";
+        }
         
 	    <li class="@IsTopLevelActive(isTopLevelActive, isChildOfTopLevelActive)">
 		    <a href="@a.Url">
-		    <i class="icon-file-text"></i> 
+		    <i class="@icon"></i> 
 		    <span class="title">@a.Title</span>
 		    @if (children.Count() > 0)
             {
@@ -92,7 +99,7 @@
 }
 
 
-
+    @*
 				<li class="activeXXX ">
 					<a href="javascript:;">
 					<i class="icon-cogs"></i> 
@@ -529,4 +536,5 @@
 					<span class="title">Visual Charts</span>
 					</a>
 				</li>
+    *@
 			</ul>

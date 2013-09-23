@@ -5,6 +5,7 @@ using N2.Integrity;
 using N2.Web.UI;
 using System.Web.UI.WebControls;
 using N2.Persistence;
+using Dinamico;
 
 namespace N2.Templates.Mvc.Models.Pages
 {
@@ -43,6 +44,9 @@ namespace N2.Templates.Mvc.Models.Pages
 
 		[EditableDirectUrl("Direct URL", 15, Placeholder = "e.g. /news", ContainerName = Tabs.Details)]
 		public virtual string DirectUrl { get; set; }
+
+        [EditableText(Title = "Page Icon", ContainerName = Tabs.Details)]
+        public virtual string PageIcon { get; set; }
 	}
 
 	[Obsolete("Use ContentPageBase and [PageDefinition]")]

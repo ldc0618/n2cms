@@ -17,5 +17,6 @@ namespace N2.Templates.Mvc.Models
 		public int Take { get; set; }
 
 		public string Tag { get; set; }
+
 	}
 }
