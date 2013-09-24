@@ -6,8 +6,18 @@
 			e.Name().Title("Path Segment");
 		});
 	});
+
+    var content = Content.Display.Text as string;
+    
+    if(Content.Display.Image != null)
+    {
+        if(content.IndexOf("<p>") == 0)
+        {
+            content.Insert(4, Content.Display.Image);
+        }
+    }
 }
 @*@Content.Register.Title().Container("Content").Configure(e => e.CssClass = "entry-title").Display()*@
 <div class="entry-content">
-	@Content.Display.Text
+    @content
 </div>

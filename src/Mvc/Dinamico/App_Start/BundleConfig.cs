@@ -25,7 +25,7 @@ namespace Dinamico
                         "~/Dinamico/Themes/Metro/plugins/metro-panel/source/js/jscrollpane/jquery.jscrollpane.min.js",
                         "~/Dinamico/Themes/Metro/plugins/metro-panel/source/js/jscrollpane/jquery.mousewheel.min.js",
                         "~/Dinamico/Themes/Metro/scripts/custom.js",
-                        "~/Dinamico/Themes/Metro/plugins/scripts/app.js"
+                        "~/Dinamico/Themes/Metro/scripts/app.js"
                         ));
 
 

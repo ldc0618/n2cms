@@ -170,6 +170,7 @@
     <Content Include="Dinamico\Themes\Metro\Content\Mood.css" />
     <Content Include="Dinamico\Themes\Metro\Content\Site.css" />
     <Content Include="Dinamico\Themes\Metro\css\animate.css" />
+    <Content Include="Dinamico\Themes\Metro\css\overrides.css" />
     <Content Include="Dinamico\Themes\Metro\css\pages\about-us.css" />
     <Content Include="Dinamico\Themes\Metro\css\pages\blog.css" />
     <Content Include="Dinamico\Themes\Metro\css\pages\coming-soon.css" />
