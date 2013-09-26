@@ -70,7 +70,7 @@
 						<!-- END BEGIN STYLE CUSTOMIZER --> 
 						<!-- BEGIN PAGE TITLE & BREADCRUMB-->
 						<h3 class="page-title">
-							@Content.Current.Page.Title <small>@Content.Current.Page.Name</small>
+							@Content.Current.Page.Title <small>@Content.Current.Page.GetDetail("Description")</small>
 						</h3>
 						
                         @{ Html.RenderPartial("LayoutPartials/Breadcrumbs"); }
@@ -133,8 +133,14 @@
 	 }
 
 
-	@{ Html.ControlPanel().Render(); }
+	@{
+        if(Request.QueryString["edit"] != null &&  Request.QueryString["edit"] == "drag")
+        {
+            Html.ControlPanel().Render(); 
+        }
+     }
 
+    @System.Web.Optimization.Styles.Render("~/content/css-overrides")
 
 @*	<div id="wrapper" class="clearfix">
 
@@ -151,8 +157,8 @@
 				@{ Html.RenderPartial("LayoutPartials/PostContent"); }
 			</div>
    }
-		</div>*@
- }
+		</div>
+ }*@
 	
 	@{ Html.Zone("Scripts").Render(); }
 
@@ -169,7 +175,7 @@
 	<!-- BEGIN FOOTER -->
 	<div class="footer">
 		<div class="footer-inner">
-			2013 &copy; Vauzo | @{ Html.RenderPartial("LayoutPartials/Footer"); }
+			@{ Html.RenderPartial("LayoutPartials/Footer"); }
 		</div>
 		<div class="footer-tools">
 			<span class="go-top">

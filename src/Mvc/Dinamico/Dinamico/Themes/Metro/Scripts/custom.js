@@ -5,6 +5,12 @@ $(document).ready(function () {
     // Panel
     $('.op-elem').openpanel();
 
+    $(".themecolor").click(function () {
+        var color = $(this).attr("data-style");
+        $.cookie('themecolor', color, { expires: 360, path: '/' });
+        location.reload();
+    });
+
     $(".news-open").click(function () {
 
         $('.op-elem').trigger('click');

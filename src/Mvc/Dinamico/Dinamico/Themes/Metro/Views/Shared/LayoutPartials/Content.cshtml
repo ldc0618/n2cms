@@ -7,17 +7,20 @@
 		});
 	});
 
-    var content = Content.Display.Text as string;
+    var content = Content.Current.Item.GetDetail("Text") as string;
+    var img = Content.Display.Html.ViewData.Model.Image;
     
-    if(Content.Display.Image != null)
+    if(!string.IsNullOrEmpty(img))
     {
+        var imgTag = string.Format("<img align='left' src='/N2/Files/Resize.ashx?img={0}&w=350&h=450' />", img);  
         if(content.IndexOf("<p>") == 0)
         {
-            content.Insert(4, Content.Display.Image);
+            content = content.Insert(3, imgTag);
         }
     }
 }
 @*@Content.Register.Title().Container("Content").Configure(e => e.CssClass = "entry-title").Display()*@
+
 <div class="entry-content">
-    @content
+    @Html.Raw(content)
 </div>

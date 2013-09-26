@@ -36,14 +36,22 @@ namespace Dinamico
                 "~/Dinamico/Themes/Metro/css/style-metro.css",
                 "~/Dinamico/Themes/Metro/css/style.css",
                 "~/Dinamico/Themes/Metro/css/style-responsive.css",
-                "~/Dinamico/Themes/Metro/css/themes/light.css",
                 "~/Dinamico/Themes/Metro/plugins/uniform/css/uniform.default.css",
-                "~/Dinamico/Themes/Metro/css/overrides.css",
                 "~/Dinamico/Themes/Metro/css/pages/blog.css",
                 "~/Dinamico/Themes/Metro/plugins/metro-panel/source/css/openpanel-custom.css"
                 ));
 
 
+            bundles.Add(new StyleBundle("~/content/css-overrides").Include(
+                "~/Dinamico/Themes/Metro/css/overrides.css"
+                ));
+
+            bundles.Add(new StyleBundle("~/content/blue").Include("~/Dinamico/Themes/Metro/css/themes/blue.css"));
+            bundles.Add(new StyleBundle("~/content/brown").Include("~/Dinamico/Themes/Metro/css/themes/brown.css"));
+            bundles.Add(new StyleBundle("~/content/default").Include("~/Dinamico/Themes/Metro/css/themes/default.css"));
+            bundles.Add(new StyleBundle("~/content/grey").Include("~/Dinamico/Themes/Metro/css/themes/grey.css"));
+            bundles.Add(new StyleBundle("~/content/light").Include("~/Dinamico/Themes/Metro/css/themes/light.css"));
+            bundles.Add(new StyleBundle("~/content/purple").Include("~/Dinamico/Themes/Metro/css/themes/purple.css"));
         }
     }
 }

@@ -13,5 +13,13 @@
 
 @System.Web.Optimization.Styles.Render("~/content/css")
 
+@if (Request.Cookies["themecolor"] != null)
+{
+    @System.Web.Optimization.Styles.Render("~/content/" + Request.Cookies["themecolor"].Value )
+}
+else
+{
+    @System.Web.Optimization.Styles.Render("~/content/light")
+}
 
 	<!-- END GLOBAL MANDATORY STYLES -->

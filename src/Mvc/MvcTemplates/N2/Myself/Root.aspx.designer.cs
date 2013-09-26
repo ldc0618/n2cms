@@ -31,42 +31,6 @@ namespace N2.Management.Myself {
         protected global::N2.Web.UI.WebControls.Zone Zone1;
         
         /// <summary>
-        /// c1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell c1;
-        
-        /// <summary>
-        /// Zone2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::N2.Web.UI.WebControls.DroppableZone Zone2;
-        
-        /// <summary>
-        /// c2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlTableCell c2;
-        
-        /// <summary>
-        /// Zone3 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::N2.Web.UI.WebControls.DroppableZone Zone3;
-        
-        /// <summary>
         /// c3 control.
         /// </summary>
         /// <remarks>

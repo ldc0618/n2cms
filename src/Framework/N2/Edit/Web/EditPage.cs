@@ -187,6 +187,9 @@ namespace N2.Edit.Web
 		
         protected virtual void Refresh(ContentItem item)
         {
+            if (Request.QueryString["nomgmt"] != null)
+                Response.Redirect(item.Url);
+
             Page.RefreshManagementInterface(item);
         }
 

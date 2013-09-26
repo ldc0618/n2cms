@@ -44,8 +44,8 @@ namespace N2.Management.Myself
 
 			if (!ControlPanel.GetState(this).IsFlagSet(ControlPanelState.DragDrop))
 			{
-				HideIfEmpty(c1, Zone2.DataSource);
-				HideIfEmpty(c2, Zone3.DataSource);
+                //HideIfEmpty(c1, Zone2.DataSource);
+                //HideIfEmpty(c2, Zone3.DataSource);
 				HideIfEmpty(c3, Zone4.DataSource);
 			}
 		}

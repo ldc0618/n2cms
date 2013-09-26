@@ -1,30 +1,60 @@
 ﻿@{
-    //var page = N2.Content.Current.Page;
-    //var editUrl = string.Format("/N2/Content/Edit.aspx?item={0}&versionIndex={1}", page.ID, page.VersionIndex);
+    var page = N2.Content.Current.Page;
+    var viewUrl = page.Url;
+    var editUrl = string.Format("/N2/Content/Edit.aspx?item={0}&versionIndex={1}", page.ID, page.VersionIndex);
     //var layoutUrl = string.Format("/LanguageIntersection/Index?page={0}&view=draft&edit=drag", page.ID);
+    //var layoutUrl = string.Format("/N2/?mode=Organize&item={0}&selected=/languages{1}/", page.ID, page.Url);
+    var layoutUrl = string.Format("/ContentPages/Index?page={0}&view=draft&edit=drag", page.ID);
+
+    var securityUrl = string.Format("/N2/Content/Security/Default.aspx?item={0}", page.ID);
+
+    var siteSettingsUrl = string.Format("/N2/Content/EditRecursive.aspx?selected=/languages{1}/&item={0}&nomgmt=1", page.ID, page.Url);
+    var usersUrl = string.Format("/N2/Users/Users.aspx", page.ID);
+    var dashboardUrl = string.Format("/N2/Myself/Root.aspx?page=1");
+
+    var newPageUrl = string.Format("/N2/Content/New.aspx?selected=/languages{1}&item={0}", page.ID, page.Url);
+    var newPageRootUrl = string.Format("/N2/Content/New.aspx?selected=/languages/en/&item=3");
+    
+    
 }
 
 <div class="color-panel hidden-phone">
     <div class="color-mode-icons icon-color"></div>
     <div class="color-mode-icons icon-color-close"></div>
     <div class="color-mode">
-@*        <p>CURRENT PAGE</p>
-        <ul>
-            <li><a href="@editUrl">Edit</a></li>
-            <li><a href="@layoutUrl">Layout</a></li>
-        </ul>
+        <p>CURRENT PAGE</p>
+        <p>
+            <a class="btn green-stripe" target="_parent" href="@viewUrl">View</a>
+            <a class="btn yellow-stripe" target="_parent" href="@editUrl">Edit</a>
+            <a class="btn red-stripe" target="_parent" href="@editUrl">Delete</a>
+            <a class="btn blue-stripe" target="_parent" href="@layoutUrl">Modules</a>
+            <a class="btn purple-stripe" target="_parent" href="@securityUrl">Security</a>
+        </p>
+
         
-        *@
-        <p>THEME COLOR</p>
+        <p>SITE SETTINGS</p>
+        <p>
+            <a class="btn green-stripe" target="_parent" href="@dashboardUrl">Dashboard</a>
+            <a class="btn yellow-stripe" target="_parent" href="@siteSettingsUrl">Site Settings</a>
+            <a class="btn purple-stripe" target="_parent" href="@usersUrl">Users</a>
+        </p>
+
+        <p>ADD NEW</p>
+        <p>
+            <a class="btn green-stripe" target="_parent" href="@newPageUrl">Page Under Current</a>
+            <a class="btn yellow-stripe" target="_parent" href="@newPageRootUrl">Page Under Root</a>
+        </p>
+        
+        <p>MY THEME COLOR</p>
         <ul class="inline">
-            <li class="color-black current color-default" data-style="default"></li>
-            <li class="color-blue" data-style="blue"></li>
-            <li class="color-brown" data-style="brown"></li>
-            <li class="color-purple" data-style="purple"></li>
-            <li class="color-grey" data-style="grey"></li>
-            <li class="color-white color-light" data-style="light"></li>
+            <li class="color-black themecolor" data-style="default"></li>
+            <li class="color-blue themecolor" data-style="blue"></li>
+            <li class="color-brown themecolor" data-style="brown"></li>
+            <li class="color-purple themecolor" data-style="purple"></li>
+            <li class="color-grey themecolor" data-style="grey"></li>
+            <li class="color-white color-light  themecolor" data-style="light"></li>
         </ul>
-        <label>
+       @* <label>
             <span>Layout</span>
             <select class="layout-option m-wrap small">
                 <option value="fluid" selected>Fluid</option>
@@ -51,6 +81,6 @@
                 <option value="fixed">Fixed</option>
                 <option value="default" selected>Default</option>
             </select>
-        </label>
+        </label>*@
     </div>
 </div>

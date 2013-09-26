@@ -1,6 +1,11 @@
 <%@ Page Language="C#" MasterPageFile="../Content/Framed.Master" AutoEventWireup="true" CodeBehind="Users.aspx.cs" Inherits="N2.Edit.Membership.Users" Title="Users" meta:resourcekey="PageResource1" %>
 <asp:Content ID="ContentHead" ContentPlaceHolderID="Head" runat="server">
 </asp:Content>
+
+<asp:Content ID="ct" ContentPlaceHolderID="Toolbar" runat="server">
+	<a href="/" class="command publish primary-action">Back</a>
+</asp:Content>
+
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
 	<asp:HyperLink ID="HyperLink1" runat="server" NavigateUrl="New.aspx" CssClass="btn" meta:resourcekey="HyperLinkResource1">new</asp:HyperLink>
 

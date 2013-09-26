@@ -1846,8 +1846,7 @@
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>xcopy G:\WWW-GitHub\n2cms\src\Mvc\MvcTemplates\N2 G:\WWW-GitHub\n2cms\src\Mvc\Dinamico\N2 /e /s /d /y</PostBuildEvent>
   </PropertyGroup>
   <Import Project="$(SolutionDir)\.nuget\nuget.targets" />
 </Project>
