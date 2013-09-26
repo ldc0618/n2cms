@@ -38,6 +38,9 @@ namespace N2.Edit.FileSystem
             Refresh(Selection.SelectedItem, ToolbarArea.Navigation, force: false);
             btnDelete.Enabled = Engine.SecurityManager.IsAuthorized(User, Selection.SelectedItem, N2.Security.Permission.Publish);
 			hlEdit.NavigateUrl = Engine.ManagementPaths.GetEditExistingItemUrl(Selection.SelectedItem);
+            var currentUrl = Request.QueryString["selected"].ToString();
+            hlNewFolder.NavigateUrl = "/N2/Content/Edit.aspx?selected=" + currentUrl + "&discriminator=Directory";
+                
         }
 
 		private void Reload()

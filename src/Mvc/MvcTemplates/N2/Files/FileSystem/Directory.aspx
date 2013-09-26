@@ -34,7 +34,11 @@
 				    </div>
 			    </ItemTemplate>
 		    </asp:Repeater>
+           
 	    </div>
+
+         <br />
+            <asp:HyperLink ID="hlNewFolder" runat="server" Text="New Sub Folder" CssClass="command edit" />
 
 		<edit:PermissionPanel id="ppPermitted" RequiredPermission="Write" runat="server" meta:resourceKey="ppPermitted">
 			<edit:FileUpload runat="server" />

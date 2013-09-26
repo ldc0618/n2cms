@@ -11,9 +11,14 @@
     var siteSettingsUrl = string.Format("/N2/Content/EditRecursive.aspx?selected=/languages{1}/&item={0}&nomgmt=1", page.ID, page.Url);
     var usersUrl = string.Format("/N2/Users/Users.aspx", page.ID);
     var dashboardUrl = string.Format("/N2/Myself/Root.aspx?page=1");
-
+    var uploadsUrl = string.Format("/N2/Files/FileSystem/Directory.aspx?selected=%2fupload%2f");
+    var trashBinUrl = string.Format("/N2/Content/Trash/Default.aspx?page=153&view=draft");
+    
     var newPageUrl = string.Format("/N2/Content/New.aspx?selected=/languages{1}&item={0}", page.ID, page.Url);
     var newPageRootUrl = string.Format("/N2/Content/New.aspx?selected=/languages/en/&item=3");
+
+    
+    var legacyAdmintUrl = string.Format("/N2");
     
     
 }
@@ -37,6 +42,9 @@
             <a class="btn green-stripe" target="_parent" href="@dashboardUrl">Dashboard</a>
             <a class="btn yellow-stripe" target="_parent" href="@siteSettingsUrl">Site Settings</a>
             <a class="btn purple-stripe" target="_parent" href="@usersUrl">Users</a>
+            <a class="btn blue-stripe" target="_parent" href="@uploadsUrl">Uploads</a>
+            <a class="btn red-stripe" target="_parent" href="@trashBinUrl">Trash Bin</a>
+            <a class="btn blue-stripe" target="_parent" href="@legacyAdmintUrl">Legacy Admin</a>
         </p>
 
         <p>ADD NEW</p>
