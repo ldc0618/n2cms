@@ -8,7 +8,7 @@
         <asp:LinkButton ID="btnSave" runat="server" CssClass="command save primary-action" data-icon-class="n2-icon-save" OnCommand="btnSave_Command" meta:resourcekey="btnSaveResource1">Save</asp:LinkButton>
         <asp:LinkButton ID="btnSaveRecursive" runat="server" CssClass="command" data-icon-class="n2-icon-save" OnCommand="btnSaveRecursive_Command" meta:resourcekey="btnSaveRecursiveResource1">Save whole branch</asp:LinkButton>
     </n2:OptionsMenu>
-    <edit:CancelLink ID="hlCancel" runat="server" meta:resourcekey="hlCancelResource1">Cancel</edit:CancelLink>
+    <edit:CancelLink ID="hlCancel" runat="server" Visible="false" meta:resourcekey="hlCancelResource1">Cancel</edit:CancelLink>
 </asp:Content>
 <asp:Content ID="cc" ContentPlaceHolderID="Content" runat="server">
 	<edit:PersistentOnlyPanel ID="popNotSupported" runat="server" meta:resourceKey="popNotSupported">

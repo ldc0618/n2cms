@@ -11,7 +11,7 @@
     var siteSettingsUrl = string.Format("/N2/Content/EditRecursive.aspx?selected=/languages{1}/&item={0}&nomgmt=1", page.ID, page.Url);
     var usersUrl = string.Format("/N2/Users/Users.aspx", page.ID);
     var dashboardUrl = string.Format("/N2/Myself/Root.aspx?page=1");
-    var uploadsUrl = string.Format("/N2/Files/FileSystem/Directory.aspx?selected=%2fupload%2f");
+    var uploadsUrl = string.Format("/N2/Files/FileSystem/Directory.aspx?selected=%2fupload%2f&returnUrl={0}",viewUrl);
     var trashBinUrl = string.Format("/N2/Content/Trash/Default.aspx?page=153&view=draft");
     
     var newPageUrl = string.Format("/N2/Content/New.aspx?selected=/languages{1}&item={0}", page.ID, page.Url);

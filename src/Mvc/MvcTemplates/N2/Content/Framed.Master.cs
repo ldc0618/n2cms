@@ -17,6 +17,12 @@ namespace N2.Edit
 			base.OnInit(e);
 
 			Register.JQuery(Page);
+
+            if(Request.QueryString["returnUrl"] != null)
+                Session["LastContentPageUrl"] = Request.QueryString["returnUrl"];
+
+            if (Session["LastContentPageUrl"] == null)
+                Session["LastContentPageUrl"] = "/";
 		}
 
 		protected override void OnPreRender(EventArgs e)

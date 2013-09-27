@@ -16,6 +16,7 @@
 	<form id="f" runat="server">
 		<div id="toolbar" class="toolbar">
 			<div class="inner">
+                <a class="command primary-action" href="<%# Session["LastContentPageUrl"].ToString() %>">Back</a>
 				<asp:ContentPlaceHolder ID="Toolbar" runat="server" />
 			</div>
 		</div>
@@ -39,4 +40,9 @@
 			$(document.body).removeClass("toolbar-hidden");
 		}
 	</script>
+
+    
+
 </asp:Content>
+
+
