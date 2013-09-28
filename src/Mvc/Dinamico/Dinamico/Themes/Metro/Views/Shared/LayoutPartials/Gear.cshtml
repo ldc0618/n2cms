@@ -1,18 +1,20 @@
 ﻿@{
     var page = N2.Content.Current.Page;
     var viewUrl = page.Url;
-    var editUrl = string.Format("/N2/Content/Edit.aspx?item={0}&versionIndex={1}", page.ID, page.VersionIndex);
+    var editUrl = string.Format("/N2/Content/Edit.aspx?item={0}&versionIndex={1}&returnUrl={2}", page.ID, page.VersionIndex, page.Url);
+    var deleteUrl = string.Format("/N2/Content/Delete.aspx?selected=/languages{1}/&item={0}&returnUrl={1}", page.ID, page.Url);
+    
     //var layoutUrl = string.Format("/LanguageIntersection/Index?page={0}&view=draft&edit=drag", page.ID);
     //var layoutUrl = string.Format("/N2/?mode=Organize&item={0}&selected=/languages{1}/", page.ID, page.Url);
     var layoutUrl = string.Format("/ContentPages/Index?page={0}&view=draft&edit=drag", page.ID);
 
-    var securityUrl = string.Format("/N2/Content/Security/Default.aspx?item={0}", page.ID);
+    var securityUrl = string.Format("/N2/Content/Security/Default.aspx?item={0}&returnUrl={1}", page.ID, page.Url);
 
-    var siteSettingsUrl = string.Format("/N2/Content/EditRecursive.aspx?selected=/languages{1}/&item={0}&nomgmt=1", page.ID, page.Url);
-    var usersUrl = string.Format("/N2/Users/Users.aspx", page.ID);
-    var dashboardUrl = string.Format("/N2/Myself/Root.aspx?page=1");
+    var siteSettingsUrl = string.Format("/N2/Content/EditRecursive.aspx?selected=/languages{1}/&item={0}&returnUrl={1}", page.ID, page.Url);
+    var usersUrl = string.Format("/N2/Users/Users.aspx?returnUrl={1}", page.ID, page.Url);
+    var dashboardUrl = string.Format("/N2/Myself/Root.aspx?page=1&returnUrl={0}", page.Url);
     var uploadsUrl = string.Format("/N2/Files/FileSystem/Directory.aspx?selected=%2fupload%2f&returnUrl={0}",viewUrl);
-    var trashBinUrl = string.Format("/N2/Content/Trash/Default.aspx?page=153&view=draft");
+    var trashBinUrl = string.Format("/N2/Content/Trash/Default.aspx?page=153&view=draft&returnUrl={0}", page.Url);
     
     var newPageUrl = string.Format("/N2/Content/New.aspx?selected=/languages{1}&item={0}", page.ID, page.Url);
     var newPageRootUrl = string.Format("/N2/Content/New.aspx?selected=/languages/en/&item=3");
@@ -31,7 +33,7 @@
         <p>
             <a class="btn green-stripe" target="_parent" href="@viewUrl">View</a>
             <a class="btn yellow-stripe" target="_parent" href="@editUrl">Edit</a>
-            <a class="btn red-stripe" target="_parent" href="@editUrl">Delete</a>
+            <a class="btn red-stripe" target="_parent" href="@deleteUrl">Delete</a>
             <a class="btn blue-stripe" target="_parent" href="@layoutUrl">Modules</a>
             <a class="btn purple-stripe" target="_parent" href="@securityUrl">Security</a>
         </p>

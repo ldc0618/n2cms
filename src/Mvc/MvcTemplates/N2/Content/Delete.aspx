@@ -6,7 +6,7 @@
 </asp:Content>
 <asp:Content ID="ContentToolbar" ContentPlaceHolderID="Toolbar" runat="server">
 		<asp:LinkButton ID="btnDelete" runat="server" OnClick="OnDeleteClick" CssClass="command delete primary-action" data-icon-class="n2-icon-trash" meta:resourceKey="btnDelete">Delete</asp:LinkButton>
-		<edit:CancelLink ID="hlCancel" runat="server" meta:resourceKey="hlCancel">Cancel</edit:CancelLink>
+		<edit:CancelLink ID="hlCancel" Visible="false" runat="server" meta:resourceKey="hlCancel">Cancel</edit:CancelLink>
 </asp:Content>
 <asp:Content ID="ContentContent" ContentPlaceHolderID="Content" runat="server">
 	<edit:PermissionPanel id="ppPermitted" RequiredPermission="Publish" runat="server" meta:resourceKey="ppPermitted">

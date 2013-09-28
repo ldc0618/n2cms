@@ -2450,6 +2450,7 @@
     <Content Include="Dinamico\Themes\Metro\plugins\metro-panel\source\demo.php" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\MetroPanel.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\ContentParts\FourColumns.cshtml" />
+    <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\PageMessage.cshtml" />
     <None Include="Dinamico\Themes\Web.config.MVC3" />
   </ItemGroup>
   <ItemGroup>

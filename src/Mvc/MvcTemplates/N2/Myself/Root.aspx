@@ -2,13 +2,13 @@
 <asp:Content ContentPlaceHolderID="Head" runat="server">
 	<link href="<%= N2.Web.Url.ResolveTokens("{ManagementUrl}/Resources/Css/Root.css") %>"" rel="stylesheet" type="text/css" />
 </asp:Content>
+<asp:Content ID="ct" ContentPlaceHolderID="Toolbar" runat="server">
+
+</asp:Content>
+
 <asp:Content ContentPlaceHolderID="Content" runat="server">
    
-     <div class="toolbar" style="display:block;">
-				
-	<a class="command publish primary-action" href="/">Back</a>
 
-		</div>
 
 	<div id="home">
 		<n2:SlidingCurtain ID="sc" runat="server">

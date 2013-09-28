@@ -41,3 +41,7 @@ p img {
 .definitions, .controlPanel .new {
     max-height: 100%;
 }
+
+.page-message {
+    padding: 20px 0 0 0 ;
+}

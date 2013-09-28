@@ -32,6 +32,9 @@ namespace N2.Edit
 				h1.InnerHtml = Page.Title;
 				h1.Visible = !string.IsNullOrEmpty(Page.Title);
 			}
+
+            hlBack.NavigateUrl = Session["LastContentPageUrl"].ToString();
+
 			base.OnPreRender(e);
 		}
 

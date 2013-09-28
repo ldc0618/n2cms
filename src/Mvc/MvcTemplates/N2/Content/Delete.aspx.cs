@@ -135,6 +135,8 @@ namespace N2.Edit
         protected void OnDeleteClick(object sender, EventArgs e)
         {
 			var item = selectedItem;
+            var url = selectedItem.Parent.Url.ToString();
+
             var parent = item.Parent;
 			try
             {
@@ -163,14 +165,16 @@ namespace N2.Edit
 					Engine.Persister.Delete(selectedItem);
 				}
 
-                if (parent != null)
-                    Refresh(parent, ToolbarArea.Both);
-                else
-                    Refresh(N2.Context.UrlParser.StartPage, ToolbarArea.Both);
+                //if (parent != null)
+                //    Refresh(parent, ToolbarArea.Both);
+                //else
+                //    Refresh(N2.Context.UrlParser.StartPage, ToolbarArea.Both);
 
 				ppPermitted.Visible = false;
 
 				Engine.AddActivity(new ManagementActivity { Operation = "Delete", PerformedBy = User.Identity.Name, Path = selectedItem.Path, ID = selectedItem.ID });
+
+                Response.Redirect(url);
             }
             catch (Exception ex)
             {

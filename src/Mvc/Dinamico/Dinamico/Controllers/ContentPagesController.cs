@@ -12,5 +12,10 @@ namespace Dinamico.Controllers
 		{
 			return View(CurrentItem.TemplateKey, CurrentItem);
 		}
+
+        public ActionResult GetVersionInfo()
+        {
+            return View("LayoutPartials/PageMessage");
+        }
 	}
 }

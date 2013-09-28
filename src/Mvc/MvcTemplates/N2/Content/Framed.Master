@@ -16,7 +16,7 @@
 	<form id="f" runat="server">
 		<div id="toolbar" class="toolbar">
 			<div class="inner">
-                <a class="command primary-action" href="<%# Session["LastContentPageUrl"].ToString() %>">Back</a>
+                <asp:HyperLink ID="hlBack" CssClass="command primary-action" runat="server">Back</asp:HyperLink>
 				<asp:ContentPlaceHolder ID="Toolbar" runat="server" />
 			</div>
 		</div>

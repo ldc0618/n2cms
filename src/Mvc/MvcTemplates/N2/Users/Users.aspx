@@ -3,7 +3,7 @@
 </asp:Content>
 
 <asp:Content ID="ct" ContentPlaceHolderID="Toolbar" runat="server">
-	<a href="/" class="command publish primary-action">Back</a>
+	
 </asp:Content>
 
 <asp:Content ID="Content4" ContentPlaceHolderID="Content" runat="server">
