@@ -65,8 +65,12 @@
 					<div class="span12">
 						<!-- BEGIN STYLE CUSTOMIZER -->
 
-                        @*@{ Html.RenderPartial("LayoutPartials/PageMessage"); }*@
-                        @{ Html.Action("GetVersionInfo", "ContentPages"); }
+                        @if(ViewBag.HasNewerVersion == true)
+                        {
+                            Html.RenderPartial("LayoutPartials/PageMessage");
+                        }
+                        
+                        @*@{ Html.RenderAction("GetVersionInfo", "Management"); }*@
                         @{ Html.RenderPartial("LayoutPartials/Gear"); }
 
 						<!-- END BEGIN STYLE CUSTOMIZER --> 
@@ -76,6 +80,8 @@
 						</h3>
 						
                         @{ Html.RenderPartial("LayoutPartials/Breadcrumbs"); }
+
+                        
 
 						<!-- END PAGE TITLE & BREADCRUMB-->
 					</div>

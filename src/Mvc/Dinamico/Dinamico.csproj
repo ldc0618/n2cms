@@ -111,6 +111,7 @@
     <Compile Include="Dinamico\Controllers\FallbackController.cs" />
     <Compile Include="Dinamico\Controllers\FreeFormController.cs" />
     <Compile Include="Dinamico\Controllers\LanguageIntersectionController.cs" />
+    <Compile Include="Dinamico\Controllers\ManagementController.cs" />
     <Compile Include="Dinamico\Controllers\MembershipController.cs" />
     <Compile Include="Dinamico\Controllers\NewsContainerController.cs" />
     <Compile Include="Dinamico\Controllers\StartPageController.cs" />

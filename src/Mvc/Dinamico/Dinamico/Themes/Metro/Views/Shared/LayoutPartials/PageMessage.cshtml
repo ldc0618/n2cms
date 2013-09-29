@@ -1,6 +1,7 @@
 ﻿@{
     
-    //var item = N2.Content.Current.Page;
+    var page = N2.Content.Current.Page;
+    var version = ViewBag.LatestDraftVersion;
     
     //string url = string.Empty;
 
@@ -21,5 +22,6 @@
     
 }
 <div class="page-message">
-    <a class="btn yellow big btn-block" href="">Link(big)<i class="m-icon-big-swapright m-icon-white"></i></a>
+    <a class="btn yellow big btn-block" href="#">Warning this is a draft, click to see current published version (version 2)<i class="m-icon-big-swapright m-icon-white"></i></a>
+    <a class="btn green big btn-block publish-page" data-url="@Html.Raw("/languages" + @page.Url + "/")" data-version-index="@version" href="#">Click to publish this version (version 3)<i class="m-icon-big-swapright m-icon-white"></i></a>
     </div>

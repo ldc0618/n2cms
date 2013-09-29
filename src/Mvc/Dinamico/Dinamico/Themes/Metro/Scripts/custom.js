@@ -5,11 +5,23 @@ $(document).ready(function () {
     // Panel
     $('.op-elem').openpanel();
 
+    SetupColorPanel();
+
+    NewsOpenDetails();
+
+    PublishPage();
+
+});
+
+function SetupColorPanel() {
     $(".themecolor").click(function () {
         var color = $(this).attr("data-style");
         $.cookie('themecolor', color, { expires: 360, path: '/' });
         location.reload();
     });
+}
+
+function NewsOpenDetails() {
 
     $(".news-open").click(function () {
 
@@ -34,22 +46,59 @@ $(document).ready(function () {
                 //tags
                 $('.icon-tags').hide();
                 var tag = '';
-                for (var i = 0; i < r[0].tags.length; i++) { 
+                for (var i = 0; i < r[0].tags.length; i++) {
                     tag = tag + '<a class="tag-popup" href="#">' + r[0].tags[i] + '</a>';
                     $('.icon-tags').show();
                 }
-                
+
                 $('.tag-popup').remove();
                 $('.news-tags').append(tag);
             },
             complete: function () {
-                
+
             },
             error: function (req, status, error) {
                 alert(error);
             }
         });
 
-        
+
     });
-});
+
+}
+
+function PublishPage() {
+
+    $(".publish-page").click(function () {
+
+        //example json to be posted:
+        //{"selected":"/languages/en/files/","versionIndex":3}
+
+        var url = $(this).attr("data-url");
+        var latestVersion = $(this).attr("data-version-index");
+        var actionURL = '/N2/Api/Content.ashx/publish';
+        //var params = '{ "selected": "/languages/en/files/", "versionIndex": 4 }'
+
+        var params = { selected: url, versionIndex: latestVersion };
+
+        $.ajax({
+            type: "POST",
+            url: actionURL,
+            data: params,
+            success: function (r) {
+
+                //$('.news-title').html(r[0].title);
+                location.reload();
+            },
+            complete: function () {
+
+            },
+            error: function (req, status, error) {
+                alert(error);
+            }
+        });
+
+
+    });
+
+}
