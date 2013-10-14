@@ -43,6 +43,9 @@
 						</div>
 						<asp:ObjectDataSource ID="odsRoles" runat="server" TypeName="System.Web.Security.Roles" SelectMethod="GetAllRoles" />
 					</div>
+                    <div>
+                    <asp:CheckBox ID="cbSendInvite" runat="server" Width="400px" Text="Send Invitation Email" Checked="true" />
+                        </div>
 				</ContentTemplate>
 			</asp:CreateUserWizardStep>
 			<asp:CompleteWizardStep runat="server">

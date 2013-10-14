@@ -38,7 +38,8 @@ namespace Dinamico
                 "~/Dinamico/Themes/Metro/css/style-responsive.css",
                 "~/Dinamico/Themes/Metro/plugins/uniform/css/uniform.default.css",
                 "~/Dinamico/Themes/Metro/css/pages/blog.css",
-                "~/Dinamico/Themes/Metro/plugins/metro-panel/source/css/openpanel-custom.css"
+                "~/Dinamico/Themes/Metro/plugins/metro-panel/source/css/openpanel-custom.css",
+                "~/Dinamico/Themes/Metro/css/pages/profile.css"
                 ));
 
 

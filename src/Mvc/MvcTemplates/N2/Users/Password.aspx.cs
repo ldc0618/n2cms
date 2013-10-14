@@ -11,7 +11,14 @@ namespace N2.Edit.Membership
 
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			LoadSelectedUser();
+            if (User.IsInRole("Administrators"))
+            {
+                LoadSelectedUser();
+            }
+            else
+            {
+
+            }
 		}
 		protected void Page_PreRender(object sender, EventArgs e)
 		{
@@ -21,7 +28,12 @@ namespace N2.Edit.Membership
 
 		private void LoadSelectedUser()
 		{
-			SelectedUserName = Request.QueryString["user"];
+            SelectedUserName = User.Identity.Name;
+            if (User.IsInRole("Administrators"))
+            {
+                SelectedUserName = Request.QueryString["user"];;
+            }
+            Label1.Text += " for " + SelectedUserName;
 			MembershipUserCollection muc = System.Web.Security.Membership.FindUsersByName(SelectedUserName);
 			if (muc.Count < 1)
 				throw new N2.N2Exception("User '{0}' not found.", SelectedUserName);

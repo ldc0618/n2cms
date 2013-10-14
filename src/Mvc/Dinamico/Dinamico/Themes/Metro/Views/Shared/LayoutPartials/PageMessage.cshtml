@@ -2,7 +2,13 @@
     
     var page = N2.Content.Current.Page;
     var version = ViewBag.LatestDraftVersion;
-    
+
+    var isViewingUnpublishedDraft = ViewBag.LatestDraftVersion > ViewBag.PublishedVersion && (page.RewrittenUrl == Request.Url.PathAndQuery);
+    var isViewingDraftAndLaterVersionExists = ViewBag.LatestDraftVersion > ViewBag.PublishedVersion & !isViewingUnpublishedDraft;
+
+    //N2.Security.ISecurityManager security = Engine.SecurityManager;
+    Roles.DeleteRole("test5");
+    var isEditor = Roles.IsUserInRole("Editors");
     //string url = string.Empty;
 
     //if (item.VersionOf.HasValue)
@@ -21,7 +27,18 @@
     //}
     
 }
+@if(isEditor)
+{
 <div class="page-message">
-    <a class="btn yellow big btn-block" href="#">Warning this is a draft, click to see current published version (version 2)<i class="m-icon-big-swapright m-icon-white"></i></a>
-    <a class="btn green big btn-block publish-page" data-url="@Html.Raw("/languages" + @page.Url + "/")" data-version-index="@version" href="#">Click to publish this version (version 3)<i class="m-icon-big-swapright m-icon-white"></i></a>
+    @if (isViewingDraftAndLaterVersionExists)
+    {
+        <a class="btn purple big btn-block" href="@ViewBag.PublishedUrl">Warning, there is a newer draft of this page, click to see the newer version (version @ViewBag.LatestDraftVersion)<i class="m-icon-big-swapright m-icon-white"></i></a>
+    }
+
+    @if(isViewingUnpublishedDraft)
+    {
+        <a class="btn yellow big btn-block" href="@ViewBag.PublishedUrl">Warning this is a draft, click to see current published version (version @ViewBag.PublishedVersion)<i class="m-icon-big-swapright m-icon-white"></i></a>
+        <a class="btn green big btn-block publish-page" data-url="@Html.Raw("/languages" + @page.Url + "/")" data-version-index="@version" href="#">Click to publish this version (version @ViewBag.LatestDraftVersion)<i class="m-icon-big-swapright m-icon-white"></i></a>
+    }
     </div>
+}

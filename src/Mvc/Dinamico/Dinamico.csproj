@@ -108,6 +108,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Dinamico\Controllers\ContentPagesController.cs" />
     <Compile Include="Dinamico\Controllers\ContentPartsController.cs" />
+    <Compile Include="Dinamico\Controllers\UserProfilePageController.cs" />
     <Compile Include="Dinamico\Controllers\FallbackController.cs" />
     <Compile Include="Dinamico\Controllers\FreeFormController.cs" />
     <Compile Include="Dinamico\Controllers\LanguageIntersectionController.cs" />
@@ -124,6 +125,10 @@
     <Compile Include="Dinamico\Models\ContentPage.cs" />
     <Compile Include="Dinamico\Models\ContentPageBase.cs" />
     <Compile Include="Dinamico\Models\ContentPart.cs" />
+    <Compile Include="Dinamico\Models\ProfileContainer.cs" />
+    <Compile Include="Dinamico\Models\UserProfilePageContainer.cs" />
+    <Compile Include="Dinamico\Models\UserProfileList.cs" />
+    <Compile Include="Dinamico\Models\UserProfilePage.cs" />
     <Compile Include="Dinamico\Models\FreeForm.cs" />
     <Compile Include="Dinamico\Models\LanguageIntersection.cs" />
     <Compile Include="Dinamico\Models\News.cs" />
@@ -1978,7 +1983,6 @@
     <Content Include="Dinamico\Themes\Metro\Views\ContentParts\ImageFloat.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\ContentParts\Index.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\ContentParts\Listing.cshtml" />
-    <Content Include="Dinamico\Themes\Metro\Views\ContentParts\LoginForm.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\ContentParts\Partials\GMapAddress.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\ContentParts\Partials\GMapCoordinate.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\ContentParts\Selection.cshtml" />
@@ -2043,6 +2047,7 @@
     <Content Include="Dinamico\Themes\Metro\Views\Test\Index.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Web.config" />
     <Content Include="Dinamico\Themes\Default\Views\ContentParts\ImageAndText2.cshtml" />
+    <Content Include="Dinamico\Themes\Default\Views\ContentParts\FourColumns.cshtml" />
     <None Include="Dinamico\Themes\Default\Views\FreeForm\Form.cshtml" />
     <None Include="Dinamico\Themes\Default\Views\FreeForm\Index.cshtml" />
     <None Include="Dinamico\Themes\Default\Views\FreeForm\Submitted.cshtml" />
@@ -2455,6 +2460,7 @@
     <Content Include="Dinamico\Themes\Metro\Views\ContentParts\FourColumns.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\PageMessage.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Login\Index.cshtml" />
+    <Content Include="Dinamico\Themes\Metro\Views\UserProfilePage\Index.cshtml" />
     <None Include="Dinamico\Themes\Web.config.MVC3" />
   </ItemGroup>
   <ItemGroup>

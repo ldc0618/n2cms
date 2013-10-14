@@ -31,6 +31,12 @@ namespace Dinamico.Controllers
 			return View();
 		}
 
+        public ActionResult MyProfile()
+        {
+            
+            return View();
+        }
+
 		[HttpPost]
 		public ActionResult LogOn(LogOnModel model, string returnUrl)
 		{
