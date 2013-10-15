@@ -125,7 +125,6 @@
     <Compile Include="Dinamico\Models\ContentPage.cs" />
     <Compile Include="Dinamico\Models\ContentPageBase.cs" />
     <Compile Include="Dinamico\Models\ContentPart.cs" />
-    <Compile Include="Dinamico\Models\ProfileContainer.cs" />
     <Compile Include="Dinamico\Models\UserProfilePageContainer.cs" />
     <Compile Include="Dinamico\Models\UserProfileList.cs" />
     <Compile Include="Dinamico\Models\UserProfilePage.cs" />
