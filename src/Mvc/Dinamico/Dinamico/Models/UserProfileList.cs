@@ -9,7 +9,7 @@ using System.Web.UI.WebControls;
 
 namespace N2.Templates.Mvc.Models.Parts
 {
-	[PartDefinition("User Profile List",
+	[PartDefinition("User Profile List2",
 		Description = "A news list box that can be displayed in a column.",
 		SortOrder = 160,
 		IconUrl = "~/Content/Img/newspaper_go.png")]

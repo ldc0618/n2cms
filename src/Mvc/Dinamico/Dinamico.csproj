@@ -2047,6 +2047,7 @@
     <Content Include="Dinamico\Themes\Metro\Views\Web.config" />
     <Content Include="Dinamico\Themes\Default\Views\ContentParts\ImageAndText2.cshtml" />
     <Content Include="Dinamico\Themes\Default\Views\ContentParts\FourColumns.cshtml" />
+    <Content Include="Dinamico\Themes\Default\Views\ContentParts\EmployeeDirectory.cshtml" />
     <None Include="Dinamico\Themes\Default\Views\FreeForm\Form.cshtml" />
     <None Include="Dinamico\Themes\Default\Views\FreeForm\Index.cshtml" />
     <None Include="Dinamico\Themes\Default\Views\FreeForm\Submitted.cshtml" />

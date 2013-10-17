@@ -7,7 +7,7 @@
 		});
 	});
 
-    var content = Content.Current.Item.GetDetail("Text") as string;
+    var content = Content.Current.Item != null ?  Content.Current.Item.GetDetail("Text") as string : string.Empty;
     var img = Content.Display.Html.ViewData.Model.Image;
     
     if(!string.IsNullOrEmpty(img))
