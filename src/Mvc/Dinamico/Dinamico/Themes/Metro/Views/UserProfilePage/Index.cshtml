@@ -5,7 +5,18 @@
 	   {
 		   ie.Title = "My Profile";
 		   ie.IconUrl = "{IconsUrl}/photo_link.png";
-	   }); }
+	   });
+
+   var img = Model.Image;
+   var imgTag = "/upload/en/team/jack-black/Ian%20Blaine%20thePlatform%20CEO_third.jpg";
+
+   if (!string.IsNullOrEmpty(img))
+   {
+       imgTag = string.Format("/N2/Files/Resize.ashx?img={0}&w=283&h=450", img);
+
+   }
+       
+       }
 
 <!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid profile">
@@ -22,7 +33,7 @@
 							<div class="tab-content">
 								<div class="tab-pane row-fluid active" id="tab_1_1">
 									<ul class="unstyled profile-nav span3">
-										<li><img src="assets/img/profile/profile-img.png" alt="" /> <a href="#" class="profile-edit">edit</a></li>
+										<li><img src="@img" alt="@Model.Title" /> <a href="#" class="profile-edit">edit</a></li>
 										<li><a href="#">Projects</a></li>
 										<li><a href="#">Messages <span>3</span></a></li>
 										<li><a href="#">Friends</a></li>
@@ -32,14 +43,14 @@
 										<div class="row-fluid">
 											<div class="span8 profile-info">
 												<h1>@Model.Title</h1>
-												<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt laoreet dolore magna aliquam tincidunt erat volutpat laoreet dolore magna aliquam tincidunt erat volutpat.</p>
-												<p><a href="#">www.mywebsite.com</a></p>
+											@Html.Raw(Model.Text)
+												<p><a href="@Model.Url">@Model.Url</a></p>
 												<ul class="unstyled inline">
 													<li><i class="icon-map-marker"></i> @Model.Location</li>
-													<li><i class="icon-calendar"></i> 18 Jan 1982</li>
-													<li><i class="icon-briefcase"></i> Design</li>
-													<li><i class="icon-star"></i> Top Seller</li>
-													<li><i class="icon-heart"></i> BASE Jumping</li>
+													@*<li><i class="icon-calendar"></i> @Model.StartDate</li>*@
+													<li><i class="icon-briefcase"></i> @Model.Skills</li>
+													<li><i class="icon-star"></i> @Model.JobTitle</li>
+													<li><i class="icon-heart"></i> @Model.Loves</li>
 												</ul>
 											</div>
 											<!--end span8-->
@@ -54,20 +65,20 @@
 													<div class="portlet-body">
 														<ul class="unstyled">
 															<li>
-																<span class="sale-info">TODAY SOLD <i class="icon-img-up"></i></span> 
-																<span class="sale-num">23</span>
+																<span class="sale-info">POINTS TODAY <i class="icon-img-up"></i></span> 
+																<span class="sale-num">0</span>
 															</li>
 															<li>
-																<span class="sale-info">WEEKLY SALES <i class="icon-img-down"></i></span> 
-																<span class="sale-num">87</span>
+																<span class="sale-info">POINTS THIS WEEK <i class="icon-img-down"></i></span> 
+																<span class="sale-num">22</span>
 															</li>
 															<li>
-																<span class="sale-info">TOTAL SOLD</span> 
+																<span class="sale-info">TOTAL POINTS</span> 
 																<span class="sale-num">2377</span>
 															</li>
 															<li>
-																<span class="sale-info">EARNS</span> 
-																<span class="sale-num">$37.990</span>
+																<span class="sale-info">AVG POINTS/WEEK</span> 
+																<span class="sale-num">34</span>
 															</li>
 														</ul>
 													</div>
@@ -78,7 +89,7 @@
 										<!--end row-fluid-->
 										<div class="tabbable tabbable-custom tabbable-custom-profile">
 											<ul class="nav nav-tabs">
-												<li class="active"><a href="#tab_1_11" data-toggle="tab">Latest Customers</a></li>
+												<li class="active"><a href="#tab_1_11" data-toggle="tab">Activity</a></li>
 												<li ><a href="#tab_1_22" data-toggle="tab">Feeds</a></li>
 											</ul>
 											<div class="tab-content">

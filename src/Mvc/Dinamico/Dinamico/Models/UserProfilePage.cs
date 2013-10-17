@@ -3,6 +3,8 @@ using N2.Details;
 using N2.Persistence;
 using N2.Definitions;
 using System.Web.UI.WebControls;
+using System.ComponentModel.DataAnnotations;
+using System;
 
 namespace Dinamico.Models
 {
@@ -18,23 +20,50 @@ namespace Dinamico.Models
         [Persistable(Length = 256)] // to minimize select+1
         public virtual string Image { get; set; }
 
-        [EditableText(Title = "Display Name", ContainerName = Defaults.Containers.Content)]
+        [Required]
+        [Display(Name = "Display name")]
+        [EditableText(Title = "Display Name", SortOrder=1, Placeholder="Display Name", ContainerName = Defaults.Containers.Content)]
         public override string Title { get; set; }
 
-        [EditableText(Title = "First Name", ContainerName = Defaults.Containers.Content)]
+        [Required]
+        [EditableText(Title = "User Name", SortOrder = 2, ContainerName = Defaults.Containers.Content)]
+        public virtual string UserName { get; set; }
+
+        [Required]
+        [EditableText(Title = "First Name", SortOrder = 3, ContainerName = Defaults.Containers.Content)]
         public virtual string FirstName { get; set; }
 
-        [EditableText(Title = "Last Name", ContainerName = Defaults.Containers.Content)]
+        [Required]
+        [EditableText(Title = "Last Name", SortOrder = 4, ContainerName = Defaults.Containers.Content)]
         public virtual string LastName { get; set; }
+
+        [Required]
+        [EditableText(Title = "Email", SortOrder = 5, ContainerName = Defaults.Containers.Content)]
+        public virtual string Email { get; set; }
 
         [EditableText(Title = "Location", ContainerName = Defaults.Containers.Content)]
         public virtual string Location { get; set; }
-        /// <summary>
-        /// Summary text displayed in listings.
-        /// </summary>
-        [EditableText(TextMode = TextBoxMode.MultiLine, Columns = 80, Rows = 2, ValidationExpression = ".*{0,1000", ValidationMessage = "Max 100 characters")]
-        [Persistable(Length = 1024)] // to minimize select+1
-        public virtual string Summary { get; set; }
+
+        [EditableText(Title = "Job Title", ContainerName = Defaults.Containers.Content)]
+        public virtual string JobTitle { get; set; }
+
+        [EditableText(Title = "Skills", ContainerName = Defaults.Containers.Content)]
+        public virtual string Skills { get; set; }
+
+        [EditableText(Title = "Loves", ContainerName = Defaults.Containers.Content)]
+        public virtual string Loves { get; set; }
+
+        //[EditableDate(Title = "Start Date")]
+        //public virtual DateTime? StartDate { get; set; }
+
+        [EditableNumber(Title = "Total Points", ContainerName = Defaults.Containers.Content)]
+        public virtual int TotalPoints { get; set; }
+
+        [EditableText(Title = "Office Phone", ContainerName = Defaults.Containers.Content)]
+        public virtual string OfficePhone { get; set; }
+
+        [EditableText(Title = "Mobile Phone", ContainerName = Defaults.Containers.Content)]
+        public virtual string MobilePhone { get; set; }
 
         /// <summary>
         /// Main content of this content item.

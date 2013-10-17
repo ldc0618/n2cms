@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var needFullwidth = N2.Context.CurrentPage.GetType().Name.Contains("UserProfilePage");    
+}
+<!DOCTYPE html>
 <!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
@@ -102,8 +105,15 @@
                     }
                 }
                 <div class="row-fluid">
-                    <div class="span8">
-                        @{Html.DroppableZone("PreMain").Render();}
+                    @if (needFullwidth)
+                    {
+                        @:<div class="span12">
+                        }
+                    else
+                    {
+                        @:<div class="span8">
+                        }
+                    @{Html.DroppableZone("PreMain").Render();}
                         @if (IsSectionDefined("page"))
                         { @RenderSection("page") }
 
@@ -114,11 +124,13 @@
 
                         @{Html.DroppableZone("PostMain").Render();}
                     </div>
-                    <div class="span4">
-                        @if (IsSectionDefined("Aside"))
-                        { @RenderSection("Aside") }
+                        @if (!needFullwidth)
+                        {
+                    @:<div class="span4">
+                        if (IsSectionDefined("Aside")) { @RenderSection("Aside") }
                         else { Html.DroppableZone("Aside").Render(); }
-                        @{ Html.DroppableZone("Recursive-Aside").Render(); } 
+                        { Html.DroppableZone("Recursive-Aside").Render(); } 
+                    }
                     </div>
                 </div>
                 @{ if (!string.IsNullOrEmpty(Html.DroppableZone("PostContent").ToHtmlString().ToString()))

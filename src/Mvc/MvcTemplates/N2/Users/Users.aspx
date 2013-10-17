@@ -18,6 +18,9 @@
 			<asp:HyperLinkField DataNavigateUrlFields="UserName" DataTextField="UserName" DataNavigateUrlFormatString="Edit.aspx?user={0}" meta:resourcekey="bcUserName" runat="server"/>
 			<asp:BoundField DataField="Email" HeaderText="email" meta:resourcekey="bcEmail" runat="server"/>
 			<asp:BoundField DataField="CreationDate" HeaderText="created" meta:resourcekey="bcCreated" runat="server"/>
+            <asp:HyperLinkField DataNavigateUrlFields="UserName" 
+				DataNavigateUrlFormatString="/en/team/{0}" Text="Profile" 
+				 />
 			<asp:HyperLinkField DataNavigateUrlFields="UserName" 
 				DataNavigateUrlFormatString="Password.aspx?user={0}" Text="password" 
 				meta:resourcekey="HyperLinkColumnResource1" />

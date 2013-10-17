@@ -5,7 +5,11 @@
 <%@ Register Src="ItemInfo.ascx" TagName="ItemInfo" TagPrefix="uc1" %>
 <%@ Register Src="Versions/RecentVersions.ascx" TagName="RecentVersions" TagPrefix="uc1" %>
 <%@ Register Src="Activity/RecentActivity.ascx" TagName="RecentActivity" TagPrefix="uc1" %>
+
 <asp:Content ID="ch" ContentPlaceHolderID="Head" runat="server">
+    <%if (Request.QueryString["discriminator"] == "UserProfilePage") { %>
+    <script src="EditHacks.js"></script>
+    <% } %>
 </asp:Content>
 <asp:Content ID="ct" ContentPlaceHolderID="Toolbar" runat="server">
 		<div class="rightAligned">
@@ -47,7 +51,7 @@
 		<asp:ValidationSummary ID="vsEdit" runat="server" CssClass="alert alert-block alert-margin" HeaderText="The item couldn't be saved. Please look at the following:" meta:resourceKey="vsEdit"/>
 		<asp:CustomValidator ID="cvException" runat="server" Display="None" />
 
-		<div id="futurePanel" class="popup">
+		<div id="futurePanel" class="popup hide">
 				<n2:DatePicker Label-Text="When" ID="dpFuturePublishDate" runat="server" meta:resourceKey="dpFuturePublishDate" />
 				<asp:Button ID="btnSavePublishInFuture" Text="OK" OnCommand="OnSaveFuturePublishCommand" CssClass="ok" runat="server" meta:resourceKey="btnSavePublishInFuture" />
 				<asp:HyperLink ID="hlCancelSavePublishInFuture" NavigateUrl="javascript:void(0);" runat="server" CssClass="cancel" meta:resourceKey="hlCancelSavePublishInFuture">Cancel</asp:HyperLink>
