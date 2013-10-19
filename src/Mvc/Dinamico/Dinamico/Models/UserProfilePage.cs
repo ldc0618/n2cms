@@ -56,6 +56,13 @@ namespace Dinamico.Models
         //[EditableDate(Title = "Start Date")]
         //public virtual DateTime? StartDate { get; set; }
 
+        [EditableDate("Start Date", 22, ShowTime = false, UseTodayAsDefault = true, ContainerName = Defaults.Containers.Content)]
+        public virtual DateTime? EventDate
+        {
+            get { return (DateTime?)GetDetail("StartDate"); }
+            set { SetDetail("StartDate", value); }
+        }
+
         [EditableNumber(Title = "Total Points", ContainerName = Defaults.Containers.Content)]
         public virtual int TotalPoints { get; set; }
 

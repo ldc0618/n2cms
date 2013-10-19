@@ -147,6 +147,7 @@
     <Compile Include="Dinamico\Registrations\PermissionDeniedHandler.cs" />
     <Compile Include="Dinamico\Registrations\RecursiveZoneAdapter.cs" />
     <Compile Include="Dinamico\Registrations\StartPageRegistration.cs" />
+    <Compile Include="Dinamico\Services\PasswordGenerator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

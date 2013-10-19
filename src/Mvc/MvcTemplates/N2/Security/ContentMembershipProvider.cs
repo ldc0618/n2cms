@@ -30,7 +30,7 @@ namespace N2.Security
 		// Note: see MSDN for additional info
 		// http://msdn.microsoft.com/en-us/library/9x1zytyd.aspx
 		private bool enablePasswordReset = true;  // default value is true (MSDN)
-		private bool enablePasswordRetrieval = false; // default value is false (MSDN)
+		private bool enablePasswordRetrieval = true; // default value is false (MSDN)
 		int maxInvalidPasswordAttempts = 4; // note: tracking is not implemented by the provider yet
 		private int minRequiredNonAlphanumericCharacters = 0;
 		private int minRequiredPasswordLength = 5;

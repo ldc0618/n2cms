@@ -8,11 +8,10 @@
 	   });
 
    var img = Model.Image;
-   var imgTag = "/upload/en/team/jack-black/Ian%20Blaine%20thePlatform%20CEO_third.jpg";
 
    if (!string.IsNullOrEmpty(img))
    {
-       imgTag = string.Format("/N2/Files/Resize.ashx?img={0}&w=283&h=450", img);
+       var imgTag = string.Format("/N2/Files/Resize.ashx?img={0}&w=283&h=450", img);
 
    }
        
@@ -47,7 +46,7 @@
 												<p><a href="@Model.Url">@Model.Url</a></p>
 												<ul class="unstyled inline">
 													<li><i class="icon-map-marker"></i> @Model.Location</li>
-													@*<li><i class="icon-calendar"></i> @Model.StartDate</li>*@
+													<li><i class="icon-calendar"></i> @Model.GetDetail("StartDate")</li>
 													<li><i class="icon-briefcase"></i> @Model.Skills</li>
 													<li><i class="icon-star"></i> @Model.JobTitle</li>
 													<li><i class="icon-heart"></i> @Model.Loves</li>

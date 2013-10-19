@@ -15,6 +15,8 @@ using N2.Web.UI.WebControls;
 using N2.Edit.Activity;
 using N2.Management.Activity;
 using N2.Edit.AutoPublish;
+//using System.Web.Security;
+using N2.Security.Items;
 
 namespace N2.Edit
 {
@@ -140,6 +142,13 @@ namespace N2.Edit
 
 			HandleResult(ctx, Request["returnUrl"], Engine.GetContentAdapter<NodeAdapter>(ctx.Content).GetPreviewUrl(ctx.Content));
 		}
+
+
+
+
+
+
+        
 
 		private void ApplySortInfo(CommandContext ctx)
 		{
