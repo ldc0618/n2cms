@@ -27,11 +27,13 @@ namespace Dinamico.Dinamico.Registrations
 			{
 				using (register.TabContainer(Defaults.Containers.Site, "Site").Begin())
 				{
+                    register.On(sp => sp.CompanyName).Text().Configure(lt => lt.Title = "Company Name").Configure(x => x.DefaultValue = "My Company");
+                    register.On(sp => sp.IntranetName).Text().Configure(lt => lt.Title = "Intranet Name").Configure(x=>x.DefaultValue="Our Intranet");
+                    register.On(sp => sp.Logotype).ImageUpload().Configure(lt => lt.Title = "Logo");
 					register.On(sp => sp.Theme).ThemeSelection().Configure(ets => ets.EnablePreview = true);
 					register.On(sp => sp.LanguageCode).Languages();
 					register.On(sp => sp.FooterText).FreeText("Footer text")
 						.WithTokens();
-					register.On(sp => sp.Logotype).ImageUpload();
 					register.On(sp => sp.HostName).Text("Site host name (DNS)")
 						.Help("Sets a host name for this site/language. The web server must be configured to accept this host name for this to work.");
 

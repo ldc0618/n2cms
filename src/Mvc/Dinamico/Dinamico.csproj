@@ -27,6 +27,10 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -108,6 +112,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="Dinamico\Controllers\ContentPagesController.cs" />
     <Compile Include="Dinamico\Controllers\ContentPartsController.cs" />
+    <Compile Include="Dinamico\Controllers\ActivateController.cs" />
     <Compile Include="Dinamico\Controllers\UserProfilePageController.cs" />
     <Compile Include="Dinamico\Controllers\FallbackController.cs" />
     <Compile Include="Dinamico\Controllers\FreeFormController.cs" />
@@ -125,6 +130,8 @@
     <Compile Include="Dinamico\Models\ContentPage.cs" />
     <Compile Include="Dinamico\Models\ContentPageBase.cs" />
     <Compile Include="Dinamico\Models\ContentPart.cs" />
+    <Compile Include="Dinamico\Models\AccountActivation.cs" />
+    <Compile Include="Dinamico\Models\SessionVars.cs" />
     <Compile Include="Dinamico\Models\UserProfilePageContainer.cs" />
     <Compile Include="Dinamico\Models\UserProfileList.cs" />
     <Compile Include="Dinamico\Models\UserProfilePage.cs" />
@@ -147,6 +154,7 @@
     <Compile Include="Dinamico\Registrations\PermissionDeniedHandler.cs" />
     <Compile Include="Dinamico\Registrations\RecursiveZoneAdapter.cs" />
     <Compile Include="Dinamico\Registrations\StartPageRegistration.cs" />
+    <Compile Include="Dinamico\Services\EmailService.cs" />
     <Compile Include="Dinamico\Services\PasswordGenerator.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,6 +215,38 @@
     <Content Include="Dinamico\Themes\Metro\css\themes\grey.css" />
     <Content Include="Dinamico\Themes\Metro\css\themes\light.css" />
     <Content Include="Dinamico\Themes\Metro\css\themes\purple.css" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\2DayTouch.htm" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\FDTemplate.htm" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metrofix.html" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\css.css" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\footer-icon-1.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\footer-icon-2.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\icon-1.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\icon-2.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\icon-3.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\icon-4.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\icon-5.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\icon-6.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\icon-7.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\icon-8.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\logo.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\main-image-1-t4.jpg" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\main-image-2-t4.jpg" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\main-image-3-t4.jpg" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\main-image-4-t4.jpg" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\more-detail-left.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\more-detail-right.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-1.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-2.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-3.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-4.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-5.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-footer-1.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-footer-2.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-footer-3.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-footer-4.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\social-icon-footer-5.png" />
+    <Content Include="Dinamico\Themes\Metro\EmailTemplates\metro\sub-image-1-t4.png" />
     <Content Include="Dinamico\Themes\Metro\fonts\font.css" />
     <Content Include="Dinamico\Themes\Metro\img\ajax-loading.gif" />
     <Content Include="Dinamico\Themes\Metro\img\ajax-modal-loading.gif" />
@@ -1997,7 +2037,6 @@
     <Content Include="Dinamico\Themes\Metro\Views\LanguageIntersection\Index.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Membership\ChangePassword.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Membership\ChangePasswordSuccess.cshtml" />
-    <Content Include="Dinamico\Themes\Metro\Views\Membership\LogOn.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Membership\Register.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\NewsContainer\Index.aspx" />
     <Content Include="Dinamico\Themes\Metro\Views\NewsContainer\Range.ascx" />
@@ -2119,7 +2158,6 @@
     <Content Include="Dinamico\Themes\Default\Views\LanguageIntersection\Index.cshtml" />
     <Content Include="Dinamico\Themes\Default\Views\Membership\ChangePassword.cshtml" />
     <Content Include="Dinamico\Themes\Default\Views\Membership\ChangePasswordSuccess.cshtml" />
-    <Content Include="Dinamico\Themes\Default\Views\Membership\LogOn.cshtml" />
     <Content Include="Dinamico\Themes\Default\Views\Membership\Register.cshtml" />
     <Content Include="Dinamico\Themes\Default\Views\Shared\Error.cshtml" />
     <Content Include="Dinamico\Themes\Default\Views\Shared\LayoutPartials\BlogContent.cshtml" />
@@ -2460,7 +2498,6 @@
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\MetroPanel.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\ContentParts\FourColumns.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\Shared\LayoutPartials\PageMessage.cshtml" />
-    <Content Include="Dinamico\Themes\Metro\Views\Login\Index.cshtml" />
     <Content Include="Dinamico\Themes\Metro\Views\UserProfilePage\Index.cshtml" />
     <None Include="Dinamico\Themes\Web.config.MVC3" />
   </ItemGroup>

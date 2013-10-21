@@ -53,6 +53,13 @@ namespace Dinamico.Models
         [EditableText(Title = "Loves", ContainerName = Defaults.Containers.Content)]
         public virtual string Loves { get; set; }
 
+        
+        [EditableText(Title = "Activation Code", IsViewEditable = false, SortOrder = 99, ContainerName = Defaults.Containers.Hidden)]
+        public virtual string ActivationCode { get; set; }
+
+        [EditableText(Title = "Activation Date", IsViewEditable = false, SortOrder = 99, ContainerName = Defaults.Containers.Hidden)]
+        public virtual DateTime? ActivationDate { get; set; }
+
         //[EditableDate(Title = "Start Date")]
         //public virtual DateTime? StartDate { get; set; }
 

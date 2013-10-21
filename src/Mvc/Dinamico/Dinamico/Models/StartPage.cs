@@ -43,9 +43,20 @@ namespace Dinamico.Models
 
 		#endregion
 
+        [EditableText(Title = "Company Name", SortOrder = 1)]
+        public virtual string CompanyName { get; set; }
+
+        [EditableText(Title = "Intranet Name", SortOrder = 1)]
+        public virtual string IntranetName { get; set; }
+
+        [EditableText(Title = "Logo", SortOrder = 2)]
+        public virtual string Logotype { get; set; }
+
 		public virtual string FooterText { get; set; }
 
-		public virtual string Logotype { get; set; }
+        
+
+        
 
 		[EditableUrl("Login Page", 79, HelpText = "Page to display when authorization to a page fails.")]
 		public virtual string LoginPage

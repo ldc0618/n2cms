@@ -16,6 +16,7 @@ namespace Dinamico
 			public const string Content = "Content";
 			public const string Site = "Site";
 			public const string Advanced = "Advanced";
+            public const string Hidden = "Hidden";
 		}
 		
 		public static string ImageSize(string preferredSize, string fallbackToZoneNamed)

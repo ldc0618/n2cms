@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Dinamico.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -25,6 +26,8 @@ namespace Dinamico.Dinamico
                 return Content("true");
             }
 
+            
+
             return Content("false");
         }
 
@@ -37,6 +40,14 @@ namespace Dinamico.Dinamico
                 if (FormsAuthentication.Authenticate(username, password)
                     || (System.Web.Security.Membership.ValidateUser(username, password) && System.Web.Security.Membership.GetUser(username).IsApproved))
                 {
+                    var user = System.Web.Security.Membership.GetUser(username);
+                    UserProfilePage profile = N2.Find.Items.Where.Type.Eq(typeof(UserProfilePage)).And.Property("Email") == user.Email;
+
+                    var footerPages = N2.Find.Items.Where.Type.Eq(typeof(UserProfilePage)).And(x => x.Details.ContainsKey("Email") && (bool)x.Details["Email"].Value == user.Email).Select(x => x as UserProfilePage);
+
+                    Session[SessionVars.Keys.UserName.ToString()] = user.UserName;
+                    Session[SessionVars.Keys.UserEmail.ToString()] = user.Email;
+                    Session[SessionVars.Keys.ProfileId.ToString()] = user.Email;
                     //e.Authenticated = true;
                     //Travis Pettijohn - Oct 2010 - pettijohn.com
                     //Using FormsAuthentication.RedirectFromLoginPage crashes the Azure dev fabric load balancer (dfloadbalancer.exe).
