@@ -22,25 +22,29 @@ namespace Dinamico.Models
         public virtual string Image { get; set; }
 
         [Required]
-        [Display(Name = "Display name")]
-        [EditableText(Title = "Display Name", SortOrder=1, Placeholder="Display Name", ContainerName = Defaults.Containers.Content)]
-        public override string Title { get; set; }
-
-        [Required]
-        [EditableText(Title = "User Name", SortOrder = 2, ContainerName = Defaults.Containers.Content)]
-        public virtual string UserName { get; set; }
-
-        [Required]
-        [EditableText(Title = "First Name", SortOrder = 3, ContainerName = Defaults.Containers.Content)]
+        [EditableText(Title = "First Name*", SortOrder = 1, ContainerName = Defaults.Containers.Content)]
         public virtual string FirstName { get; set; }
 
         [Required]
-        [EditableText(Title = "Last Name", SortOrder = 4, ContainerName = Defaults.Containers.Content)]
+        [EditableText(Title = "Last Name*", SortOrder = 2, ContainerName = Defaults.Containers.Content)]
         public virtual string LastName { get; set; }
 
         [Required]
-        [EditableText(Title = "Email", SortOrder = 5, ContainerName = Defaults.Containers.Content)]
+        [EditableText(Title = "Email*", SortOrder = 5, ContainerName = Defaults.Containers.Content)]
         public virtual string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Display name*")]
+        [EditableText(Title = "Display Name*", SortOrder=4, Placeholder="Display Name", ContainerName = Defaults.Containers.Content)]
+        public override string Title { get; set; }
+
+        [Required]
+        [EditableText(Title = "User Name*", SortOrder = 5, ContainerName = Defaults.Containers.Content)]
+        public virtual string UserName { get; set; }
+
+
+
+
 
         [EditableText(Title = "Location", ContainerName = Defaults.Containers.Content)]
         public virtual string Location { get; set; }

@@ -63,10 +63,10 @@ else
         @if(!string.IsNullOrEmpty(ViewBag.PasswordSentMessage))
         {
             
-           <div class="note note-success" style="background-color:#EBFCEE">
-                        <h2 class="block">Success!</h2>
+           <div class="alert alert-block alert-@ViewBag.PasswordSentMessageCss fade in" >
+                        <h2 class="block">@ViewBag.PasswordSentMessageHeader!</h2>
                         <p>
-                           ViewBag.PasswordSentMessage<br /><br />
+                           @Html.Raw(ViewBag.PasswordSentMessage)<br /><br />
                             If you have any issues, please feel free to reach out to us at <a href="mailto:support@vauzo.com">support@vauzo.com</a>
                             <br />
                         </p>
@@ -122,7 +122,7 @@ else
 				<h4>Forgot your password ?</h4>
 				<p>
 					no worries, click <a href="javascript:;"  id="forget-password">here</a>
-					to reset your password.
+					to have your password email to you.
 				</p>
 			</div>
 			<div class="create-account">
@@ -137,18 +137,7 @@ else
 		<form class="form-vertical forget-form" action="/login/forgotpassword" method="post">
             @Html.AntiForgeryToken()
 
-            @if(true)
-        {
-            
-           <div class="note note-success" style="background-color:#EBFCEE">
-                        <h2 class="block">Success! Your account has been activated</h2>
-                        <p>
-                           Please login using the form below - your username and password can be found in your email.<br /><br />
-                            If you have any issues, please feel free to reach out to us at <a href="mailto:support@vauzo.com">support@vauzo.com</a>
-                            <br />
-                        </p>
-                     </div>
-         }
+ 
 			<h3 >Forget Password ?</h3>
 			<p>Enter your e-mail address below to have your password sent to you in email.</p>
 			<div class="control-group">

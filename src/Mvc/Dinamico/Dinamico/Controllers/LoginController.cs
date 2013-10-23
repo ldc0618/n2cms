@@ -16,6 +16,7 @@ namespace Dinamico.Dinamico
 
         public ActionResult Index()
         {
+            ViewBag.AccountJustActivated = null;
             return View("/dinamico/Themes/Metro/Views/Shared/LayoutPartials/LogOn.cshtml");
         }
 
@@ -77,8 +78,17 @@ namespace Dinamico.Dinamico
         [ValidateAntiForgeryToken]
         public ActionResult ForgotPassword(string email)
         {
-            ViewBag.PasswordSentMessage = string.Format("Success, password emailed to {0}", email);
-            EmailService.ForgotPasswordEmail(email);
+            ViewBag.PasswordSentMessageHeader = "Whoops!";
+            ViewBag.PasswordSentMessageCss = "error";
+            ViewBag.AccountJustActivated = null;
+            ViewBag.PasswordSentMessage = EmailService.ForgotPasswordEmail(email);
+
+            if (ViewBag.PasswordSentMessage.Contains("Success"))
+            {
+                ViewBag.PasswordSentMessageHeader = "Success!";
+                ViewBag.PasswordSentMessageCss = "success";
+            }
+            
             return View("/dinamico/Themes/Metro/Views/Shared/LayoutPartials/LogOn.cshtml");
         }
     }

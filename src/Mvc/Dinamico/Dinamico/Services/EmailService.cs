@@ -348,9 +348,11 @@ namespace Services
             //Services.EmailService.MailMergeInvitation("support@vauzo.com", 
         }
 
-        public static void ForgotPasswordEmail(string email)
+        public static string ForgotPasswordEmail(string email)
         {
             var profile = new ProfileService().GetProfileByEmail(email);
+            if (profile == null)
+                return "Email addresss not found, please try again";
             var user = System.Web.Security.Membership.GetUser(profile.UserName);
             var password = user.GetPassword();
             string domain = HttpContext.Current.Request.Url.Authority;
@@ -361,14 +363,16 @@ namespace Services
             var sender = SessionService.Current.DisplayName;
             var subject = string.Format("Password retrieval for {0}", intranetName);
 
-            string body = string.Format("Hi {0},<br><br>{1}<br><br> You can login here: <br><a href='http://{2}/login'>http://{2}/login</a><br><br>" +
+            string body = string.Format("Hi {0},<br><br>Per your request, we are sending your username/password for {6}<br><br> You can login here: <br><a href='http://{2}/login'>http://{2}/login</a><br><br>" +
                 "Your credentials are below:<br><br>Username: {4}<br>Password: {5}<br><br>" +
-                "Vauzo is a hosted intranet service. Click <a href='http://www.vauzo.com'>here</a> for more info.<br><br>Thanks!<br>The Vauzo Team<br>" +
-                "<a href='mailto:support@vauzo.com'>support@vauzo.com</a>", 
-                profile.FirstName , subject, domain, code, user.UserName, password);
+                "Thanks!<br>The Vauzo Team<br>" +
+                "<a href='mailto:support@vauzo.com'>support@vauzo.com</a>",
+                profile.FirstName, subject, domain, code, user.UserName, password, intranetName);
 
-            var status = EmailService.sendTextMail(user.Email, "", "no-reply@vauzo.com", subject, body);
+            var status = EmailService.sendTextMail(profile.Email, "", "no-reply@vauzo.com", subject, body);
             //Services.EmailService.MailMergeInvitation("support@vauzo.com", 
+
+            return string.Format("Success, password emailed to <b>{0}</b>", email);
         }
     }
 
