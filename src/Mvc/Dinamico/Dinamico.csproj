@@ -27,10 +27,14 @@
     <IISExpressUseClassicPipelineMode />
     <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\..\..\</SolutionDir>
     <RestorePackages>true</RestorePackages>
-    <SccProjectName>SAK</SccProjectName>
-    <SccLocalPath>SAK</SccLocalPath>
-    <SccAuxPath>SAK</SccAuxPath>
-    <SccProvider>SAK</SccProvider>
+    <SccProjectName>
+    </SccProjectName>
+    <SccLocalPath>
+    </SccLocalPath>
+    <SccAuxPath>
+    </SccAuxPath>
+    <SccProvider>
+    </SccProvider>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -131,7 +135,6 @@
     <Compile Include="Dinamico\Models\ContentPageBase.cs" />
     <Compile Include="Dinamico\Models\ContentPart.cs" />
     <Compile Include="Dinamico\Models\AccountActivation.cs" />
-    <Compile Include="Dinamico\Models\SessionVars.cs" />
     <Compile Include="Dinamico\Models\UserProfilePageContainer.cs" />
     <Compile Include="Dinamico\Models\UserProfileList.cs" />
     <Compile Include="Dinamico\Models\UserProfilePage.cs" />
@@ -156,6 +159,8 @@
     <Compile Include="Dinamico\Registrations\StartPageRegistration.cs" />
     <Compile Include="Dinamico\Services\EmailService.cs" />
     <Compile Include="Dinamico\Services\PasswordGenerator.cs" />
+    <Compile Include="Dinamico\Services\ProfileService.cs" />
+    <Compile Include="Dinamico\Services\SessionService.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -5,6 +5,7 @@ using Services;
 using System;
 using Dinamico.Models;
 using System.Web.Security;
+using System.Text.RegularExpressions;
 
 namespace Dinamico.Controllers
 {
@@ -15,9 +16,15 @@ namespace Dinamico.Controllers
         public override ActionResult Index()
         {
             var code = Request.QueryString["code"] != null ? Request.QueryString["code"] : string.Empty;
-            var id = Request.QueryString["id"] != null ? Request.QueryString["id"] : string.Empty;
+            if (!string.IsNullOrEmpty(code))
+            {
+                //activate account
+                var profile = new Services.ProfileService().GetProfileByActivationCode(code);
+                profile.ActivationDate = DateTime.Now;
+                N2.Context.Persister.Save(profile);
+            }
 
-            
+            ViewBag.AccountJustActivated = "true";
 
             return View("/dinamico/Themes/Metro/Views/Shared/LayoutPartials/LogOn.cshtml");
         }
@@ -25,8 +32,7 @@ namespace Dinamico.Controllers
         public ActionResult Resend(int userid)
         {
             var user = N2.Context.Current.Persister.Get<UserProfilePage>(userid);
-            var sender = N2.Context.Current.Persister.Get<UserProfilePage>(Session[SessionVars.Keys.ProfileId]) as UserProfilePage;
-            EmailService.SendInvitationEmail(user, sender.Title, user.ActivationCode);
+            EmailService.SendInvitationEmail(user, user.ActivationCode);
             
             return Content(string.Format("Invitation resent to {0} at {1}", user.Title, user.Email)); 
         }

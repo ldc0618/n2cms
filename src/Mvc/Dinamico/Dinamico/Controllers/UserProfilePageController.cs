@@ -62,9 +62,8 @@ namespace Dinamico.Controllers
 
                 Roles.AddUserToRole(user.UserName, "Members");
 
-                var sender = User.Identity.Name;
                 
-                EmailService.SendInvitationEmail(user, sender, user.ActivationCode);
+                EmailService.SendInvitationEmail(user, user.ActivationCode);
                  
             }
         }

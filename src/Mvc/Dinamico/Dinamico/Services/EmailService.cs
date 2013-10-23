@@ -330,16 +330,43 @@ namespace Services
             //    mailFrom, mailTo, mailToCc, mailToBcc, mailReplyTo, subject, bodyText, emailGUID, 0, 0, DateTime.Now);
         }
 
-        public static void SendInvitationEmail(UserProfilePage user, string sender, string password)
+        public static void SendInvitationEmail(UserProfilePage user, string password)
         {
             string domain = HttpContext.Current.Request.Url.Authority;
-            var code = string.Format("{0}I{1}", password, user.ID);
+            var code = string.Format("{0}", password);
             var startPage = N2.Context.Current.Persister.Get<StartPage>(3) as StartPage;
             var intranetName = startPage.IntranetName;
             var companyName = startPage.CompanyName;
+            var sender = SessionService.Current.DisplayName;
             var subject = string.Format("{0} from {1} has invited you to join {2} hosted by Vauzo", sender, companyName, intranetName);
-            string body = string.Format("{0} has invited to join<br> <a href='http://{1}/activate?code={2}'>Activate Account</a><br><br>Vauzo is a hosted intranet service. Click <a href='http://www.vauzo.com'>here</a> for more info.", sender, domain, code);
+
+            string body = string.Format("Hi {0},<br><br>{1}<br><br> Please activate your account by clicking on the link below:<br><a href='http://{2}/activate?code={3}'>Activate Account</a><br><br>" +
+                "After activation your account you can login using the credentials below:<br><br>Username: {4}<br>Password: {5}<br><br>" +
+                "Vauzo is a hosted intranet service. Click <a href='http://www.vauzo.com'>here</a> for more info.<br><br>Thanks!<br>The Vauzo Team", user.FirstName, subject, domain, code, user.UserName, password);
             
+            var status = EmailService.sendTextMail(user.Email, "", "no-reply@vauzo.com", subject, body);
+            //Services.EmailService.MailMergeInvitation("support@vauzo.com", 
+        }
+
+        public static void ForgotPasswordEmail(string email)
+        {
+            var profile = new ProfileService().GetProfileByEmail(email);
+            var user = System.Web.Security.Membership.GetUser(profile.UserName);
+            var password = user.GetPassword();
+            string domain = HttpContext.Current.Request.Url.Authority;
+            var code = string.Format("{0}", password);
+            var startPage = N2.Context.Current.Persister.Get<StartPage>(3) as StartPage;
+            var intranetName = startPage.IntranetName;
+            var companyName = startPage.CompanyName;
+            var sender = SessionService.Current.DisplayName;
+            var subject = string.Format("Password retrieval for {0}", intranetName);
+
+            string body = string.Format("Hi {0},<br><br>{1}<br><br> You can login here: <br><a href='http://{2}/login'>http://{2}/login</a><br><br>" +
+                "Your credentials are below:<br><br>Username: {4}<br>Password: {5}<br><br>" +
+                "Vauzo is a hosted intranet service. Click <a href='http://www.vauzo.com'>here</a> for more info.<br><br>Thanks!<br>The Vauzo Team<br>" +
+                "<a href='mailto:support@vauzo.com'>support@vauzo.com</a>", 
+                profile.FirstName , subject, domain, code, user.UserName, password);
+
             var status = EmailService.sendTextMail(user.Email, "", "no-reply@vauzo.com", subject, body);
             //Services.EmailService.MailMergeInvitation("support@vauzo.com", 
         }

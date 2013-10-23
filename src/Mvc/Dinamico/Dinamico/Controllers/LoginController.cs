@@ -1,4 +1,5 @@
 ﻿using Dinamico.Models;
+using Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,13 +42,17 @@ namespace Dinamico.Dinamico
                     || (System.Web.Security.Membership.ValidateUser(username, password) && System.Web.Security.Membership.GetUser(username).IsApproved))
                 {
                     var user = System.Web.Security.Membership.GetUser(username);
-                    UserProfilePage profile = N2.Find.Items.Where.Type.Eq(typeof(UserProfilePage)).And.Property("Email") == user.Email;
+                    var profile = new ProfileService().GetProfileByEmail(user.Email);
 
-                    var footerPages = N2.Find.Items.Where.Type.Eq(typeof(UserProfilePage)).And(x => x.Details.ContainsKey("Email") && (bool)x.Details["Email"].Value == user.Email).Select(x => x as UserProfilePage);
+                    //var footerPages = N2.Find.Items.Where.Type.Eq(typeof(UserProfilePage)).And(x => x.Details.ContainsKey("Email") && (bool)x.Details["Email"].Value == user.Email).Select(x => x as UserProfilePage);
 
-                    Session[SessionVars.Keys.UserName.ToString()] = user.UserName;
-                    Session[SessionVars.Keys.UserEmail.ToString()] = user.Email;
-                    Session[SessionVars.Keys.ProfileId.ToString()] = user.Email;
+
+                    SessionService.Current.UserName = user.UserName;
+                    SessionService.Current.UserEmail = user.Email;
+                    SessionService.Current.ProfileId = profile.ID;
+                    SessionService.Current.DisplayName = profile.Title;
+
+
                     //e.Authenticated = true;
                     //Travis Pettijohn - Oct 2010 - pettijohn.com
                     //Using FormsAuthentication.RedirectFromLoginPage crashes the Azure dev fabric load balancer (dfloadbalancer.exe).
@@ -68,5 +73,13 @@ namespace Dinamico.Dinamico
             return Redirect("/");
         }
 
+
+        [ValidateAntiForgeryToken]
+        public ActionResult ForgotPassword(string email)
+        {
+            ViewBag.PasswordSentMessage = string.Format("Success, password emailed to {0}", email);
+            EmailService.ForgotPasswordEmail(email);
+            return View("/dinamico/Themes/Metro/Views/Shared/LayoutPartials/LogOn.cshtml");
+        }
     }
 }

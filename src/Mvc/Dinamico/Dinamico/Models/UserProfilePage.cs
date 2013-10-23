@@ -5,6 +5,7 @@ using N2.Definitions;
 using System.Web.UI.WebControls;
 using System.ComponentModel.DataAnnotations;
 using System;
+using Castle.DynamicProxy;
 
 namespace Dinamico.Models
 {
@@ -50,14 +51,14 @@ namespace Dinamico.Models
         [EditableText(Title = "Skills", ContainerName = Defaults.Containers.Content)]
         public virtual string Skills { get; set; }
 
-        [EditableText(Title = "Loves", ContainerName = Defaults.Containers.Content)]
+        [EditableText(Title = "Loves",ContainerName = Defaults.Containers.Content)]
         public virtual string Loves { get; set; }
 
-        
-        [EditableText(Title = "Activation Code", IsViewEditable = false, SortOrder = 99, ContainerName = Defaults.Containers.Hidden)]
+
+        [EditableText(Title = "Activation Code", SortOrder = 999, IsViewEditable = false, ContainerName = Defaults.Containers.Metadata, ReadOnly=true)]
         public virtual string ActivationCode { get; set; }
 
-        [EditableText(Title = "Activation Date", IsViewEditable = false, SortOrder = 99, ContainerName = Defaults.Containers.Hidden)]
+        [EditableText(Title = "Activation Date", SortOrder = 999, IsViewEditable = false, ContainerName = Defaults.Containers.Metadata, ReadOnly = true)]
         public virtual DateTime? ActivationDate { get; set; }
 
         //[EditableDate(Title = "Start Date")]
