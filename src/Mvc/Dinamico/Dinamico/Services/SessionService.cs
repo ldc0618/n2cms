@@ -24,5 +24,6 @@ public class SessionService
   public string UserEmail { get; set; }
   public string DisplayName { get; set; }
   public int ProfileId { get; set; }
+  public string ProfileUrl { get; set; }
 
 }

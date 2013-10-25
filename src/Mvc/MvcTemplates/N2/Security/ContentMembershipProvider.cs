@@ -269,7 +269,9 @@ namespace N2.Security
 								  email, passwordQuestion, passwordAnswer, isApproved, providerUserKey);
 
 			Cache.Expire();
-			MembershipUser m = u.GetMembershipUser(this.Name);
+            var providerNameHack = "ContentMembershipProvider";
+			//MembershipUser m = u.GetMembershipUser(this.Name);
+            MembershipUser m = u.GetMembershipUser(providerNameHack);
 			return m;
 		}
 

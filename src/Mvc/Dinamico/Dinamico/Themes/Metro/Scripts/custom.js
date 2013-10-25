@@ -11,6 +11,8 @@ $(document).ready(function () {
 
     PublishPage();
 
+    CheckSessionValid();
+
 });
 
 function SetupColorPanel() {
@@ -101,6 +103,30 @@ function PublishPage() {
 
     });
 
+}
+
+function CheckSessionValid() {
+
+    //var params = { selected: url, versionIndex: latestVersion };
+
+    $.ajax({
+        type: "Get",
+        url: 'login/checksessoinvalid',
+        data: null,
+        success: function (r) {
+
+            if (r == "0") {
+                window.location.replace('/Membership/LogOff');
+            }
+            //location.reload();
+        },
+        complete: function () {
+
+        },
+        error: function (req, status, error) {
+            alert(error);
+        }
+    });
 }
 
 function getParameterByName(name) {

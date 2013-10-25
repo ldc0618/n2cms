@@ -33,6 +33,48 @@ namespace Dinamico.Dinamico
             return Content("false");
         }
 
+        public ActionResult ChangePassword(string password, string returnUrl)
+        {
+            ViewBag.OldPasswordBad = false;
+            ViewBag.PasswordMismatch = false;
+            ViewBag.PasswordChangedSucess = false;
+            return View("/dinamico/Themes/Metro/Views/Shared/LayoutPartials/ChangePassword.cshtml");
+        }
+
+        [ValidateAntiForgeryToken]
+        public ActionResult ChangePasswordSubmit(string oldPassword, string newPassword, string newPasswordConfirm, string returnUrl)
+        {
+            ViewBag.OldPasswordBad = false;
+            ViewBag.PasswordMismatch = false;
+            ViewBag.PasswordChangedSucess = false;
+            string view = "/dinamico/Themes/Metro/Views/Shared/LayoutPartials/ChangePassword.cshtml";
+            string username = SessionService.Current.UserName;
+            if (FormsAuthentication.Authenticate(username, oldPassword)
+                    || (System.Web.Security.Membership.ValidateUser(username, oldPassword)
+                    && System.Web.Security.Membership.GetUser(username).IsApproved))
+            {            }
+            else
+            {
+                ViewBag.OldPasswordBad = true;
+                return View(view);
+            }
+
+            if (newPassword != newPasswordConfirm)
+            {
+                ViewBag.PasswordMismatch = true;
+                return View(view);
+            }
+
+            var user = System.Web.Security.Membership.GetUser(username);
+
+            string tempPW = user.ResetPassword();
+            bool ok = user.ChangePassword(tempPW, newPassword);
+
+            ViewBag.PasswordChangedSucess = user.ChangePassword(tempPW, newPassword);
+            
+            return View(view);
+        }
+
         [ValidateAntiForgeryToken]
         public ActionResult Auth(string username, string password, int? rememberMe, string returnUrl)
         {
@@ -52,6 +94,7 @@ namespace Dinamico.Dinamico
                     SessionService.Current.UserEmail = user.Email;
                     SessionService.Current.ProfileId = profile.ID;
                     SessionService.Current.DisplayName = profile.Title;
+                    SessionService.Current.ProfileUrl = profile.Url;
 
 
                     //e.Authenticated = true;
@@ -61,6 +104,7 @@ namespace Dinamico.Dinamico
                     //FormsAuthentication.RedirectFromLoginPage(username, rememberMe);
                     FormsAuthentication.SetAuthCookie(username, remember);
                     string returnUrl2 = FormsAuthentication.GetRedirectUrl(username, remember);
+                    returnUrl2 = returnUrl2 == "/default.aspx" ? "/" : returnUrl2;
                     Response.Redirect(returnUrl2, true);
                 }
             }
@@ -90,6 +134,19 @@ namespace Dinamico.Dinamico
             }
             
             return View("/dinamico/Themes/Metro/Views/Shared/LayoutPartials/LogOn.cshtml");
+        }
+
+        public ActionResult CheckSessoinValid()
+        {
+
+            var valid = "0";
+            if (!string.IsNullOrEmpty(SessionService.Current.DisplayName))
+            {
+                valid = "1";
+                //Response.Redirect("/Membership/LogOff");
+            }
+
+            return Json(valid, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -8,14 +8,17 @@
 	   });
 
    var img = Model.Image;
-
+   var imgTag = string.Empty;
    if (!string.IsNullOrEmpty(img))
    {
-       var imgTag = string.Format("/N2/Files/Resize.ashx?img={0}&w=283&h=450", img);
-
+       imgTag = string.Format("/N2/Files/Resize.ashx?img={0}&w=283&h=450", img);
    }
-       
-       }
+   else
+   {
+       img = "/Dinamico/Themes/Metro/img/blank.jpeg";
+       imgTag = string.Format("/N2/Files/Resize.ashx?img={0}&w=283&h=450", img);
+   }
+   }
 
 <!-- BEGIN PAGE CONTENT-->
 				<div class="row-fluid profile">

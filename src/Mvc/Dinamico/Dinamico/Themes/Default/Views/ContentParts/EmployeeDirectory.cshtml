@@ -43,11 +43,18 @@
                                             @foreach (var user in users)
                                             {
                                                 var profile = user as Dinamico.Models.UserProfilePage;
-                                                var profileImg  = string.Format("/N2/Files/Resize.ashx?img={0}&w=45&h=45", profile.Image);
+                                                var img = profile.Image;
+                                                var imgTag = string.Empty;
+                                                if (string.IsNullOrEmpty(img))
+                                                {
+                                                    img = "/Dinamico/Themes/Metro/img/blank.jpeg";
+                                                }
+                                                imgTag = string.Format("/N2/Files/Resize.ashx?img={0}&w=45&h=45", img);
+                                                
                                                 var startDate = user.GetDetail("StartDate") != null ? user.GetDetail("StartDate").ToString().Substring(0, 10) : "";
                                                 var editUrl = string.Format("/N2/Content/Edit.aspx?item={0}&returnUrl={1}", profile.ID, Content.Current.Page.Url);
 											<tr>
-												<td><img src="@profileImg" alt="" /></td>
+												<td><img src="@imgTag" alt="" /></td>
 												<td class="hidden-phone">@user.Title</td>
 												<td>@profile.UserName</td>
 												<td class="hidden-phone">@startDate</td>

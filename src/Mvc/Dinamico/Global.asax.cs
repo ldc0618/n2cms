@@ -34,5 +34,7 @@ namespace Dinamico
 			RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 		}
+
+        
 	}
 }

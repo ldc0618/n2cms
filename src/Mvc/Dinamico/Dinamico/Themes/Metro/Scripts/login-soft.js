@@ -1,5 +1,7 @@
 var Login = function () {
 
+
+    
 	var handleLogin = function() {
 		$('.login-form').validate({
 	            errorElement: 'label', //default input error message container
@@ -45,7 +47,40 @@ var Login = function () {
 	            },
 
 	            submitHandler: function (form) {
-	                form.submit();
+
+	                $('.invalid').fadeOut();
+	                var username = $('#username').val();
+	                var password = $('#password').val();
+	                var rememberMe = $('#rememberMe').val();
+	                var returnUrl = '';//getParameterByName('ReturnUrl');
+	                var actionURL = '/login/validate';
+	                var params = 'username=' + username + '&password=' + password + '&rememberMe=' + rememberMe + '&returnUrl=' + returnUrl;
+
+	                $.ajax({
+	                    type: "GET",
+	                    url: actionURL,
+	                    data: params,
+	                    success: function (r) {
+
+	                        if (r == "false") {
+	                            $('.invalid').fadeIn();
+	                        }
+	                        else {
+	                            $('.success').fadeIn();
+	                            form.submit();
+	                        }
+
+	                    },
+	                    complete: function () {
+
+	                    },
+	                    error: function (req, status, error) {
+	                        alert(error);
+	                    }
+	                });
+
+
+
 	            }
 	        });
 
@@ -60,65 +95,70 @@ var Login = function () {
 	}
 
 	var handleForgetPassword = function () {
-		$('.forget-form').validate({
-	            errorElement: 'label', //default input error message container
-	            errorClass: 'help-inline', // default input error message class
-	            focusInvalid: false, // do not focus the last invalid input
-	            ignore: "",
-	            rules: {
-	                email: {
-	                    required: true,
-	                    email: true
-	                }
-	            },
-
-	            messages: {
-	                email: {
-	                    required: "Email is required."
-	                }
-	            },
-
-	            invalidHandler: function (event, validator) { //display error alert on form submit   
-
-	            },
-
-	            highlight: function (element) { // hightlight error inputs
-	                $(element)
-	                    .closest('.control-group').addClass('error'); // set error class to the control group
-	            },
-
-	            success: function (label) {
-	                label.closest('.control-group').removeClass('error');
-	                label.remove();
-	            },
-
-	            errorPlacement: function (error, element) {
-	                error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
-	            },
-
-	            submitHandler: function (form) {
-	                form.submit();
+	    $('.forget-form').validate({
+	        errorElement: 'label', //default input error message container
+	        errorClass: 'help-inline', // default input error message class
+	        focusInvalid: false, // do not focus the last invalid input
+	        ignore: "",
+	        rules: {
+	            email: {
+	                required: true,
+	                email: true
 	            }
-	        });
+	        },
 
-	        $('.forget-form input').keypress(function (e) {
-	            if (e.which == 13) {
-	                if ($('.forget-form').validate().form()) {
-	                    $('.forget-form').submit();
-	                }
-	                return false;
+	        messages: {
+	            email: {
+	                required: "Email is required."
 	            }
-	        });
+	        },
 
-	        jQuery('#forget-password').click(function () {
-	            jQuery('.login-form').hide();
-	            jQuery('.forget-form').show();
-	        });
+	        invalidHandler: function (event, validator) { //display error alert on form submit   
 
-	        jQuery('#back-btn').click(function () {
-	            jQuery('.login-form').show();
-	            jQuery('.forget-form').hide();
-	        });
+	        },
+
+	        highlight: function (element) { // hightlight error inputs
+	            $(element)
+                    .closest('.control-group').addClass('error'); // set error class to the control group
+	        },
+
+	        success: function (label) {
+	            label.closest('.control-group').removeClass('error');
+	            label.remove();
+	        },
+
+	        errorPlacement: function (error, element) {
+	            error.addClass('help-small no-left-padding').insertAfter(element.closest('.input-icon'));
+	        },
+
+	        submitHandler: function (form) {
+
+
+
+
+
+	            form.submit();
+	        }
+	    });
+
+	    $('.forget-form input').keypress(function (e) {
+	        if (e.which == 13) {
+	            if ($('.forget-form').validate().form()) {
+	                $('.forget-form').submit();
+	            }
+	            return false;
+	        }
+	    });
+
+	    jQuery('#forget-password').click(function () {
+	        jQuery('.login-form').hide();
+	        jQuery('.forget-form').show();
+	    });
+
+	    jQuery('#back-btn').click(function () {
+	        jQuery('.login-form').show();
+	        jQuery('.forget-form').hide();
+	    });
 
 	}
 
@@ -250,10 +290,10 @@ var Login = function () {
             handleRegister();        
 
             $.backstretch([
-		        "assets/img/bg/1.jpg",
-		        "assets/img/bg/2.jpg",
-		        "assets/img/bg/3.jpg",
-		        "assets/img/bg/4.jpg"
+		    "/Dinamico/Themes/Metro/img/bg/1.jpg",
+            "/Dinamico/Themes/Metro/img/bg/2.jpg",
+            "/Dinamico/Themes/Metro/img/bg/3.jpg",
+		    "/Dinamico/Themes/Metro/img/bg/4.jpg",
 		        ], {
 		          fade: 1000,
 		          duration: 8000
@@ -262,5 +302,6 @@ var Login = function () {
         }
 
     };
+
 
 }();

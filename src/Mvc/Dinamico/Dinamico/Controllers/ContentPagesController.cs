@@ -18,6 +18,10 @@ namespace Dinamico.Controllers
 		public override ActionResult Index()
 		{
 
+            if (string.IsNullOrEmpty(SessionService.Current.DisplayName))
+            {
+                return Redirect("/Membership/LogOff");
+            }
 
             ViewBag.HasNewerVersion = false;
             if (CurrentItem.VersionOf.HasValue)
@@ -42,6 +46,8 @@ namespace Dinamico.Controllers
 
 			return View(CurrentItem.TemplateKey, CurrentItem);
 		}
+
+     
 
 
 	}
